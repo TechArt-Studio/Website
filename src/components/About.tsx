@@ -3,7 +3,6 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { Zap, Heart, Gift } from 'lucide-react';
-import { CanvasRevealEffect } from '@/components/ui/canvas-reveal-effect';
 import { siteConfig } from '@/config/siteConfig';
 
 const About = () => {
@@ -82,17 +81,9 @@ const About = () => {
                       duration: 0.6,
                       ease: [0.25, 0.46, 0.45, 0.94]
                     }}
-                    className="relative h-full rounded-2xl border border-white/10 p-2 group"
+                    className="relative h-full rounded-2xl border border-white/10 p-6 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group"
                   >
-                    <div className="absolute inset-0 h-full rounded-2xl overflow-hidden">
-                      <CanvasRevealEffect
-                        animationSpeed={3}
-                        containerClassName="bg-black"
-                        colors={[[59, 130, 246], [139, 92, 246]]}
-                        dotSize={2}
-                      />
-                    </div>
-                    <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl bg-black/80 backdrop-blur-sm p-6 border border-white/5 hover:bg-black/60 transition-all duration-300">
+                    <div className="relative flex h-full flex-col justify-between gap-6">
                       <div className="relative flex flex-1 flex-col justify-between gap-4">
                         <motion.div 
                           className="inline-flex p-2 rounded-lg bg-white/10 mb-3 group-hover:bg-white group-hover:text-black transition-all duration-300 w-fit"

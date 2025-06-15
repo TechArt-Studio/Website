@@ -4,11 +4,31 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
-import { GlowingEffect } from '@/components/ui/glowing-effect';
-import { siteConfig } from '@/config/siteConfig';
 
 const Reviews = () => {
-  const reviews = siteConfig.reviews.items;
+  const reviews = [
+    {
+      name: "Pranav",
+      username: "@pranavxmeta",
+      avatar: "https://scontent-nrt1-2.cdninstagram.com/v/t51.2885-19/502083357_17894169378236066_7774365187428099235_n.jpg?stp=dst-jpg_s320x320_tt6&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_cat=102&_nc_oc=Q6cZ2QHTR1YVEdmTxN16fnxWtzCGPjzYGZuq27pjtTuAaMVIm0vEGlApFJUp_6pmqfea0AM&_nc_ohc=FARal_xg3eEQ7kNvwG0XyRb&_nc_gid=cD7aHR_GT-wG8jlSt5WZcQ&edm=AAZTMJEBAAAA&ccb=7-5&oh=00_AfMuDNPrk5kYyP_SNSMnZXOneKQv9vdRDLV0dJLMIFtflw&oe=68544F66&_nc_sid=49cb7f",
+      rating: 5,
+      comment: "Tech-Art Studio has revolutionized my workflow. The quality and attention to detail in their products is outstanding!"
+    },
+    {
+      name: "Luke",
+      username: "@heylukeai",
+      avatar: "https://scontent-nrt1-2.cdninstagram.com/v/t51.2885-19/491450505_17847124323460766_6452050202830559141_n.jpg?stp=dst-jpg_s320x320_tt6&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_cat=102&_nc_oc=Q6cZ2QH3x0TtP02Yf9GOYE8DTRCVJQOYuiuQ7xWXu-xObXrlc2xTNFMTwJUcZ6eg2E3zHKE&_nc_ohc=3SJSOOMbCPQQ7kNvwFOVCQD&_nc_gid=TOhe5T0qBMDYUqGDAUrYxg&edm=AAZTMJEBAAAA&ccb=7-5&oh=00_AfPcB9zh8gCZzgESAInqQ68KwRdvx_CR9vLGqwEy8jHTqQ&oe=68544556&_nc_sid=49cb7f",
+      rating: 5,
+      comment: "Amazing user experience and innovative solutions. Tech-Art truly understands what developers need."
+    },
+    {
+      name: "muahua",
+      username: "@xiaomuahua666",
+      avatar: "https://avatars.githubusercontent.com/u/109423710?v=4",
+      rating: 5,
+      comment: "The open source commitment and transparency of Tech-Art is exactly what the community needs. Highly recommended!"
+    }
+  ];
 
   return (
     <section id="reviews" className="py-24 bg-black relative">
@@ -23,10 +43,10 @@ const Reviews = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            {siteConfig.reviews.title}
+            What Users Say
           </h2>
           <p className="text-xl text-gray-400">
-            {siteConfig.reviews.subtitle}
+            Testimonials from our community
           </p>
         </motion.div>
         
@@ -40,13 +60,6 @@ const Reviews = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="relative"
             >
-              <GlowingEffect
-                blur={5}
-                spread={30}
-                proximity={100}
-                disabled={false}
-                className="rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              />
               <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm h-full group relative">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">

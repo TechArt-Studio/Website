@@ -2,9 +2,11 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { useBlogPosts } from '@/hooks/useBlogPosts';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 
 const Blog = () => {
   const { posts, loading } = useBlogPosts();
@@ -13,6 +15,9 @@ const Blog = () => {
   const handlePostClick = (slug: string) => {
     navigate(`/${slug}`);
   };
+
+  // 只显示最近三篇文章
+  const recentPosts = posts.slice(0, 3);
 
   if (loading) {
     return (
@@ -57,7 +62,7 @@ const Blog = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          {posts.map((post, index) => (
+          {recentPosts.map((post, index) => (
             <motion.div
               key={post.slug}
               initial={{ opacity: 0, y: 30 }}
@@ -94,6 +99,26 @@ const Blog = () => {
               </Card>
             </motion.div>
           ))}
+        </motion.div>
+        
+        {/* 查看更多按钮 */}
+        <motion.div 
+          className="text-center mt-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <Link to="/blog">
+            <Button 
+              variant="outline" 
+              size="lg"
+              className="text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200 group"
+            >
+              View All Posts
+              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
         </motion.div>
       </div>
     </section>

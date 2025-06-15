@@ -23,7 +23,6 @@ export const useBlogPosts = () => {
             title: "Welcome to Open Workspace: Redefining Collaboration and Creativity",
             description: "Welcome to Open Workspace: Redefining Collaboration and Creativity",
             date: "2024-01-15",
-            tag: "1",
             content: "Open Workspace represents a new paradigm in collaborative software development...",
             slug: "welcome-to-open-workspace"
           },

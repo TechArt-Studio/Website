@@ -3,6 +3,7 @@ import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
+import { motion } from 'framer-motion';
 
 const Team = () => {
   const team = [
@@ -37,7 +38,14 @@ const Team = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {team.map((member, index) => (
-            <div key={index} className="relative group">
+            <motion.div 
+              key={index} 
+              className="relative group h-full"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+            >
               <GlowingEffect
                 blur={3}
                 spread={20}
@@ -45,8 +53,8 @@ const Team = () => {
                 disabled={false}
                 className="rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               />
-              <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm relative">
-                <CardContent className="p-8 text-center">
+              <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm relative h-full">
+                <CardContent className="p-8 text-center h-full flex flex-col justify-center">
                   <Avatar className="w-20 h-20 mx-auto mb-4 bg-white/20">
                     <AvatarImage src={member.avatar} alt={member.name} />
                     <AvatarFallback className="text-white text-lg font-semibold bg-transparent">
@@ -61,7 +69,7 @@ const Team = () => {
                   </p>
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

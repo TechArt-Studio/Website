@@ -4,6 +4,7 @@ import { Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
   return (
@@ -19,7 +20,13 @@ const Contact = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="relative group">
+          <motion.div 
+            className="relative group h-full"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <GlowingEffect
               blur={3}
               spread={20}
@@ -27,7 +34,7 @@ const Contact = () => {
               disabled={false}
               className="rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             />
-            <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 relative">
+            <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 relative h-full">
               <CardHeader>
                 <CardTitle className="text-white">Our Location</CardTitle>
               </CardHeader>
@@ -37,9 +44,15 @@ const Contact = () => {
                 </CardDescription>
               </CardContent>
             </Card>
-          </div>
+          </motion.div>
           
-          <div className="relative group">
+          <motion.div 
+            className="relative group h-full"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             <GlowingEffect
               blur={3}
               spread={20}
@@ -47,7 +60,7 @@ const Contact = () => {
               disabled={false}
               className="rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             />
-            <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 relative">
+            <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 relative h-full">
               <CardHeader>
                 <CardTitle className="text-white">How can we help you?</CardTitle>
               </CardHeader>
@@ -61,7 +74,7 @@ const Contact = () => {
                 </Button>
               </CardContent>
             </Card>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

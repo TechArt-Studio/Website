@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -26,7 +25,7 @@ const Reviews = () => {
       username: "@xiaomuahua666",
       avatar: "https://avatars.githubusercontent.com/u/109423710?v=4",
       rating: 5,
-      comment: "The open source commitment and transparency of Tech-Art is exactly what the community needs. Highly recommended!"
+      comment: "The product is so easy to use, and the developers are very approachable"
     }
   ];
 

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -65,7 +64,6 @@ const Reviews = () => {
                 blur={3}
                 spread={20}
                 proximity={50}
-                disabled={false}
                 className="rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               />
               <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm h-full group relative">

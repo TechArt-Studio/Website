@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
@@ -88,7 +87,6 @@ const About = () => {
                       blur={3}
                       spread={20}
                       proximity={50}
-                      disabled={false}
                       className="rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     />
                     <div className="relative h-full rounded-2xl border border-white/10 p-6 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">

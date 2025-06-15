@@ -43,8 +43,8 @@
 /* Dark mode studio styles */
 .grid-pattern {
   background-image: 
-    linear-gradient(90deg, rgba(128,128,128,0.3) 1px, transparent 1px),
-    linear-gradient(rgba(128,128,128,0.3) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(128,128,128,0.6) 1px, transparent 1px),
+    linear-gradient(rgba(128,128,128,0.6) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
@@ -188,14 +188,14 @@
 /* Square pattern background with visible gray squares */
 .square-pattern {
   background-image: 
-    linear-gradient(90deg, rgba(128,128,128,0.4) 1px, transparent 1px),
-    linear-gradient(rgba(128,128,128,0.4) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(128,128,128,0.8) 1px, transparent 1px),
+    linear-gradient(rgba(128,128,128,0.8) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
 .square-pattern-subtle {
   background-image: 
-    linear-gradient(90deg, rgba(128,128,128,0.2) 1px, transparent 1px),
-    linear-gradient(rgba(128,128,128,0.2) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(128,128,128,0.5) 1px, transparent 1px),
+    linear-gradient(rgba(128,128,128,0.5) 1px, transparent 1px);
   background-size: 80px 80px;
 }

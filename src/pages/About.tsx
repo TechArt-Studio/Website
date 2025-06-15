@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Navigation from '@/components/Navigation';
+import { GlowingEffect } from '@/components/ui/glowing-effect';
 import { siteConfig } from '@/config/siteConfig';
 
 const About = () => {
@@ -15,8 +16,11 @@ const About = () => {
   useEffect(() => {
     const loadAboutContent = async () => {
       try {
-        // 从 markdown 文件加载内容
-        const response = await fetch('/src/posts/about.md');
+        // 直接使用public目录下的路径
+        const response = await fetch('/posts/about.md');
+        if (!response.ok) {
+          throw new Error('Failed to fetch about.md');
+        }
         const text = await response.text();
         
         // 移除 frontmatter (--- 之间的内容)
@@ -154,7 +158,7 @@ We're always excited to hear from our users and the broader community. Whether y
         </motion.div>
       </div>
       
-      {/* Footer */}
+      {/* Footer with Glowing Cards */}
       <footer className="py-16 bg-black border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
@@ -171,18 +175,34 @@ We're always excited to hear from our users and the broader community. Whether y
             </div>
             
             {siteConfig.footer.sections.map((section, index) => (
-              <div key={index}>
-                <h4 className="text-white font-semibold mb-4">{section.title}</h4>
-                <ul className="space-y-2 text-gray-400 text-sm">
-                  {section.links.map((link, linkIndex) => (
-                    <li key={linkIndex}>
-                      <a href={link.link} className="hover:text-white transition-colors">
-                        {link.text}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <motion.div
+                key={index}
+                className="relative h-full rounded-2xl border border-white/10 p-2"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+              >
+                <GlowingEffect
+                  spread={40}
+                  glow={true}
+                  disabled={false}
+                  proximity={64}
+                  inactiveZone={0.01}
+                />
+                <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl bg-black/40 backdrop-blur-sm p-6 border border-white/5 hover:bg-white/10 transition-all duration-300 group">
+                  <h4 className="text-white font-semibold mb-4">{section.title}</h4>
+                  <ul className="space-y-2 text-gray-400 text-sm">
+                    {section.links.map((link, linkIndex) => (
+                      <li key={linkIndex}>
+                        <a href={link.link} className="hover:text-white transition-colors">
+                          {link.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
             ))}
           </div>
           

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -16,8 +17,8 @@ const Hero = () => {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* Spotlight background effect - only keep the top-left one */}
-      <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
+      {/* Spotlight background effect - 移动端优化位置和大小 */}
+      <Spotlight className="-top-60 -left-20 md:-top-40 md:left-0 md:md:left-60 md:-top-20 w-[200%] h-[200%] md:w-[138%] md:h-[169%] lg:w-[84%]" fill="white" />
       
       {/* Grid background */}
       <div className="absolute inset-0 grid-pattern opacity-20" />

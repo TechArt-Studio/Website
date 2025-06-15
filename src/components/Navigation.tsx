@@ -146,8 +146,8 @@ const Navigation = () => {
             </Link>
           </motion.div>
 
-          {/* Mobile - Right side button group */}
-          <div className="md:hidden flex items-center space-x-3 mr-2">
+          {/* Mobile - Right side button group - 调整间距让汉堡菜单更靠左 */}
+          <div className="md:hidden flex items-center space-x-2">
             <Link to="/about">
               <Button variant="outline" size="sm" className="text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200 text-xs px-3 py-2">
                 About

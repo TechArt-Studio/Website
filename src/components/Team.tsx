@@ -8,10 +8,11 @@ import { motion } from 'framer-motion';
 const Team = () => {
   const team = [
     {
-      name: "Happyleibniz",
+      name: "Muhammad Fahad",
       role: "Founder & Developer",
-      initials: "HL",
-      avatar: "https://cdn.xyehr.cn/images/121920485.png"
+      initials: "MF",
+      avatar: "https://cdn.xyehr.cn/images/121920485.png",
+      username: "engr.fahad_"
     },
     {
       name: "Evan Huang",
@@ -64,6 +65,11 @@ const Team = () => {
                     <h3 className="text-xl font-semibold text-white">
                       {member.name}
                     </h3>
+                    {member.username && (
+                      <p className="text-sm text-gray-300">
+                        @{member.username}
+                      </p>
+                    )}
                     <p className="text-gray-400">
                       {member.role}
                     </p>

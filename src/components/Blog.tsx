@@ -4,9 +4,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { motion } from 'framer-motion';
 import { useBlogPosts } from '@/hooks/useBlogPosts';
+import { useNavigate } from 'react-router-dom';
 
 const Blog = () => {
   const { posts, loading } = useBlogPosts();
+  const navigate = useNavigate();
+
+  const handlePostClick = (slug: string) => {
+    navigate(`/${slug}`);
+  };
 
   if (loading) {
     return (
@@ -59,7 +65,10 @@ const Blog = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm h-full group cursor-pointer">
+              <Card 
+                className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm h-full group cursor-pointer"
+                onClick={() => handlePostClick(post.slug)}
+              >
                 <CardHeader>
                   {post.tag && (
                     <motion.div

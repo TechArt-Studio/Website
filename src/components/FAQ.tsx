@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const FAQ = () => {
   const faqs = [
@@ -65,20 +65,21 @@ const FAQ = () => {
               >
                 <AccordionItem 
                   value={`item-${index}`}
-                  className="bg-white/5 border-white/10 rounded-lg px-6 backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
+                  className="bg-white/5 border-white/10 rounded-lg px-6 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 overflow-hidden"
                 >
-                  <AccordionTrigger className="text-left text-white hover:text-gray-300 py-6 transition-colors duration-200">
+                  <AccordionTrigger className="text-left text-white hover:text-gray-300 py-6 transition-colors duration-200 [&[data-state=open]>svg]:rotate-180">
                     {faq.question}
                   </AccordionTrigger>
-                  <motion.div
-                    initial={false}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <AccordionContent className="text-gray-400 pb-6 animate-accordion-down">
+                  <AccordionContent className="text-gray-400 pb-6 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp">
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                    >
                       {faq.answer}
-                    </AccordionContent>
-                  </motion.div>
+                    </motion.div>
+                  </AccordionContent>
                 </AccordionItem>
               </motion.div>
             ))}

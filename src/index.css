@@ -55,6 +55,24 @@
   animation: shine 3s infinite;
 }
 
+/* Spotlight effect */
+.spotlight {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 60%;
+  height: 120%;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 40%, transparent 70%);
+  pointer-events: none;
+  transform: rotate(-15deg);
+  animation: spotlight-pulse 4s ease-in-out infinite;
+}
+
+@keyframes spotlight-pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
 @keyframes shine {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
@@ -99,7 +117,42 @@
   50% { transform: translateY(-15px); }
 }
 
-/* Accordion animations */
+/* Enhanced Accordion animations */
+@keyframes slideDown {
+  from {
+    height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.4s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Legacy accordion animations for compatibility */
 @keyframes accordion-down {
   from {
     height: 0;

@@ -11,6 +11,9 @@ const Hero = () => {
       {/* Grid background */}
       <div className="absolute inset-0 grid-pattern opacity-20" />
       
+      {/* Spotlight effect */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-radial from-white/20 via-white/5 to-transparent rounded-full blur-3xl transform -translate-x-32 -translate-y-32 animate-pulse-slow" />
+      
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
       
@@ -37,12 +40,14 @@ const Hero = () => {
           
           <div className="space-y-6">
             <motion.h1 
-              className="text-5xl md:text-7xl font-bold leading-tight text-white"
+              className="text-5xl md:text-7xl font-bold leading-tight text-white relative"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              <span className="text-shine bg-gradient-to-r from-white via-gray-300 to-white bg-clip-text text-transparent">
+              {/* Spotlight overlay on title */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent rounded-lg blur-2xl" />
+              <span className="text-shine bg-gradient-to-r from-white via-gray-300 to-white bg-clip-text text-transparent relative z-10">
                 Tech-Art
               </span>
             </motion.h1>

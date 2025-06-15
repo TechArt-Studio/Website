@@ -78,10 +78,6 @@ const Features = () => {
                 duration: 0.6,
                 ease: [0.25, 0.46, 0.45, 0.94]
               }}
-              whileHover={{ 
-                scale: 1.05,
-                transition: { duration: 0.2 }
-              }}
             >
               <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 group backdrop-blur-sm h-full">
                 <CardHeader className="pb-3">

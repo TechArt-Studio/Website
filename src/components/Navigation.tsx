@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -91,22 +90,10 @@ const Navigation = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Mobile Layout - 修复布局问题 */}
+        {/* Mobile Layout - Tech-Art左边，汉堡按钮右边 */}
         <div className="md:hidden flex items-center justify-between h-16">
-          {/* Mobile Menu Button - 固定左边位置 */}
-          <motion.div whileTap={{ scale: 0.9 }} className="flex-shrink-0">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-white hover:text-gray-300 hover:bg-white/10 p-2"
-            >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </Button>
-          </motion.div>
-
-          {/* Logo - 使用flex居中而不是绝对定位 */}
-          <div className="flex-1 flex justify-center">
+          {/* Logo - 固定左边位置 */}
+          <div className="flex-shrink-0">
             <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
               <img 
                 src={siteConfig.site.logo} 
@@ -117,14 +104,17 @@ const Navigation = () => {
             </Link>
           </div>
 
-          {/* About Button - 固定右边位置 */}
-          <div className="flex-shrink-0">
-            <Link to="/about">
-              <Button variant="outline" size="sm" className="text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200 text-xs px-3 py-1.5">
-                About
-              </Button>
-            </Link>
-          </div>
+          {/* Mobile Menu Button - 固定右边位置 */}
+          <motion.div whileTap={{ scale: 0.9 }} className="flex-shrink-0">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-white hover:text-gray-300 hover:bg-white/10 p-2"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </Button>
+          </motion.div>
         </div>
 
         {/* Desktop Layout - 保持原样 */}
@@ -180,7 +170,7 @@ const Navigation = () => {
           </motion.div>
         </div>
 
-        {/* Mobile Menu - 全屏覆盖式设计 */}
+        {/* Mobile Menu - 全屏覆盖式设计，包含About选项 */}
         <AnimatePresence>
           {isOpen && (
             <motion.div 

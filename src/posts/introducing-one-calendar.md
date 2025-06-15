@@ -3,6 +3,8 @@
 title: "Introducing One Calendar: Your Ultimate Scheduling Solution"
 description: "One Calendar is a free, open-source scheduling tool developed by the Tech-Art community. It offers comprehensive features including unlimited schedule storage, AI-powered scheduling assistance, unlimited sharing capabilities, analytics tools, and cloud backup."
 date: "2024-02-01"
+type: "blog"
+sitemap: true
 ---
 
 # Introducing One Calendar: Your Ultimate Scheduling Solution

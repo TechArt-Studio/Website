@@ -4,6 +4,8 @@ title: "Welcome to Open Workspace: Redefining Collaboration and Creativity"
 description: "Welcome to Open Workspace: Redefining Collaboration and Creativity"
 date: "2024-01-15"
 tag: "1"
+type: "blog"
+sitemap: true
 ---
 
 # Welcome to Open Workspace: Redefining Collaboration and Creativity

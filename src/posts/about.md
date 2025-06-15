@@ -1,4 +1,12 @@
 
+---
+title: "About Tech-Art Studio"
+description: "Learn about Tech-Art Studio's mission, values, and commitment to privacy-first development."
+date: "2024-01-01"
+type: "page"
+sitemap: false
+---
+
 # About Tech-Art Studio
 
 Tech-Art Studio is a cutting-edge technology company founded in China with a mission to revolutionize digital privacy and user experience. We believe that technology should empower users while protecting their fundamental right to privacy.

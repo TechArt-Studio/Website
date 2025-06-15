@@ -9,15 +9,15 @@ import { useNavigate, Link } from 'react-router-dom';
 import { siteConfig } from '@/config/siteConfig';
 
 const Blog = () => {
-  const { posts, loading } = useBlogPosts();
+  const { blogPosts, loading } = useBlogPosts();
   const navigate = useNavigate();
 
   const handlePostClick = (slug: string) => {
     navigate(`/${slug}`);
   };
 
-  // Only show the latest three articles
-  const recentPosts = posts.slice(0, 3);
+  // Only show the latest three blog articles
+  const recentPosts = blogPosts.slice(0, 3);
 
   if (loading) {
     return (

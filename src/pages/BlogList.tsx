@@ -2,13 +2,16 @@ import React, { useState, useMemo } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { useBlogPosts } from '@/hooks/useBlogPosts';
+import { useSitemap } from '@/hooks/useSitemap';
 import { useNavigate, Link } from 'react-router-dom';
-import { ArrowLeft, Search } from 'lucide-react';
+import { ArrowLeft, Search, Download } from 'lucide-react';
 
 const BlogList = () => {
-  const { posts, loading } = useBlogPosts();
+  const { blogPosts, loading } = useBlogPosts();
+  const { downloadSitemap } = useSitemap();
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -18,14 +21,14 @@ const BlogList = () => {
 
   // 过滤博客文章
   const filteredPosts = useMemo(() => {
-    if (!searchQuery) return posts;
+    if (!searchQuery) return blogPosts;
     
-    return posts.filter(post => 
+    return blogPosts.filter(post => 
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       (post.tag && post.tag.toLowerCase().includes(searchQuery.toLowerCase()))
     );
-  }, [posts, searchQuery]);
+  }, [blogPosts, searchQuery]);
 
   if (loading) {
     return (
@@ -47,13 +50,25 @@ const BlogList = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <Link 
-            to="/"
-            className="inline-flex items-center text-gray-400 hover:text-white transition-colors mb-8"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Home
-          </Link>
+          <div className="flex items-center justify-between mb-8">
+            <Link 
+              to="/"
+              className="inline-flex items-center text-gray-400 hover:text-white transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Home
+            </Link>
+            
+            <Button
+              onClick={downloadSitemap}
+              variant="outline"
+              size="sm"
+              className="text-white border-white/20 hover:bg-white hover:text-black"
+            >
+              <Download className="w-4 h-4 mr-2" />
+              Download Sitemap
+            </Button>
+          </div>
           
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">

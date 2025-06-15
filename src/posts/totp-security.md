@@ -3,6 +3,8 @@
 title: "TOTP: Time-Based One-Time Password"
 description: "TOTP (Time-Based One-Time Password) enhances 2FA security by generating a temporary 6-digit code based on the current time and a shared secret key. It offers offline password generation but requires time synchronization and secure key storage to mitigate risks."
 date: "2024-01-20"
+type: "blog"
+sitemap: true
 ---
 
 # TOTP: Time-Based One-Time Password

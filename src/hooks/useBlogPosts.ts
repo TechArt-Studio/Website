@@ -8,6 +8,8 @@ interface BlogPost {
   tag?: string;
   content: string;
   slug: string;
+  type: 'blog' | 'page';
+  sitemap: boolean;
 }
 
 export const useBlogPosts = () => {
@@ -24,21 +26,36 @@ export const useBlogPosts = () => {
             description: "Welcome to Open Workspace: Redefining Collaboration and Creativity",
             date: "2024-01-15",
             content: "Open Workspace represents a new paradigm in collaborative software development...",
-            slug: "welcome-to-open-workspace"
+            slug: "welcome-to-open-workspace",
+            type: "blog",
+            sitemap: true
           },
           {
             title: "Introducing One Calendar: Your Ultimate Scheduling Solution",
             description: "One Calendar is a free, open-source scheduling tool developed by the Tech-Art community. It offers comprehensive features including unlimited schedule storage, AI-powered scheduling assistance, unlimited sharing capabilities, analytics tools, and cloud backup.",
             date: "2024-02-01",
             content: "One Calendar is revolutionizing the way we manage our time and schedules...",
-            slug: "introducing-one-calendar"
+            slug: "introducing-one-calendar",
+            type: "blog",
+            sitemap: true
           },
           {
             title: "TOTP: Time-Based One-Time Password",
             description: "TOTP (Time-Based One-Time Password) enhances 2FA security by generating a temporary 6-digit code based on the current time and a shared secret key. It offers offline password generation but requires time synchronization and secure key storage to mitigate risks.",
             date: "2024-01-20",
             content: "Time-Based One-Time Password (TOTP) is a critical component of modern two-factor authentication systems...",
-            slug: "totp-security"
+            slug: "totp-security",
+            type: "blog",
+            sitemap: true
+          },
+          {
+            title: "Privacy Policy",
+            description: "Our privacy policy and data handling practices",
+            date: "2024-01-01",
+            content: "This is our privacy policy content...",
+            slug: "privacy-policy",
+            type: "page",
+            sitemap: false
           }
         ];
 
@@ -55,5 +72,8 @@ export const useBlogPosts = () => {
     loadPosts();
   }, []);
 
-  return { posts, loading };
+  // Filter only blog posts for blog display
+  const blogPosts = posts.filter(post => post.type === 'blog');
+  
+  return { posts, blogPosts, loading };
 };

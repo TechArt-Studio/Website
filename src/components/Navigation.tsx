@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -86,6 +87,18 @@ const Navigation = () => {
                 <Mail className="w-4 h-4" />
               </Button>
             </motion.div>
+
+            {/* About Button */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link to="/about">
+                <Button variant="outline" size="sm" className="text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200">
+                  About
+                </Button>
+              </Link>
+            </motion.div>
           </div>
 
           {/* Mobile menu button */}
@@ -130,6 +143,20 @@ const Navigation = () => {
                     </Button>
                   </motion.div>
                 ))}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.6, duration: 0.3 }}
+                >
+                  <Link to="/about" onClick={() => setIsOpen(false)}>
+                    <Button
+                      variant="outline"
+                      className="text-white border-white/20 hover:bg-white hover:text-black justify-start px-4 py-2 text-sm w-full"
+                    >
+                      About
+                    </Button>
+                  </Link>
+                </motion.div>
               </div>
             </motion.div>
           )}

@@ -10,16 +10,16 @@ const Reviews = () => {
     {
       name: "Pranav",
       username: "@pranavxmeta",
-      avatar: "https://scontent-nrt1-2.cdninstagram.com/v/t51.2885-19/502083357_17894169378236066_7774365187428099235_n.jpg?stp=dst-jpg_s320x320_tt6&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_cat=102&_nc_oc=Q6cZ2QHTR1YVEdmTxN16fnxWtzCGPjzYGZuq27pjtTuAaMVIm0vEGlApFJUp_6pmqfea0AM&_nc_ohc=FARal_xg3eEQ7kNvwG0XyRb&_nc_gid=cD7aHR_GT-wG8jlSt5WZcQ&edm=AAZTMJEBAAAA&ccb=7-5&oh=00_AfMuDNPrk5kYyP_SNSMnZXOneKQv9vdRDLV0dJLMIFtflw&oe=68544F66&_nc_sid=49cb7f",
+      avatar: "/lovable-uploads/2de234b1-b328-4458-a6fc-9a68e1f868d9.png",
       rating: 5,
-      comment: "Tech-Art Studio has revolutionized my workflow. The quality and attention to detail in their products is outstanding!"
+      comment: "Perfect 👍"
     },
     {
       name: "Luke",
       username: "@heylukeai",
-      avatar: "https://scontent-nrt1-2.cdninstagram.com/v/t51.2885-19/491450505_17847124323460766_6452050202830559141_n.jpg?stp=dst-jpg_s320x320_tt6&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_cat=102&_nc_oc=Q6cZ2QH3x0TtP02Yf9GOYE8DTRCVJQOYuiuQ7xWXu-xObXrlc2xTNFMTwJUcZ6eg2E3zHKE&_nc_ohc=3SJSOOMbCPQQ7kNvwFOVCQD&_nc_gid=TOhe5T0qBMDYUqGDAUrYxg&edm=AAZTMJEBAAAA&ccb=7-5&oh=00_AfPcB9zh8gCZzgESAInqQ68KwRdvx_CR9vLGqwEy8jHTqQ&oe=68544556&_nc_sid=49cb7f",
+      avatar: "/lovable-uploads/5d1b6d88-ab5b-4dae-b6da-2378b7b7160b.png",
       rating: 5,
-      comment: "Amazing user experience and innovative solutions. Tech-Art truly understands what developers need."
+      comment: "I love it"
     },
     {
       name: "muahua",

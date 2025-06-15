@@ -1,83 +1,85 @@
 
 import React from 'react';
-import { ArrowRight, Code, Zap, FileText, Sparkles } from 'lucide-react';
+import { ArrowRight, Code2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-      {/* Spotlight effect */}
-      <div className="absolute inset-0 spotlight"></div>
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
+      {/* Grid background */}
+      <div className="absolute inset-0 grid-pattern opacity-30" />
       
-      {/* Floating particles */}
-      <div className="absolute top-20 left-20 w-4 h-4 bg-blue-400 rounded-full floating-animation opacity-70" />
-      <div className="absolute top-40 right-32 w-3 h-3 bg-purple-400 rounded-full floating-animation opacity-60" style={{ animationDelay: '2s' }} />
-      <div className="absolute bottom-32 left-1/4 w-5 h-5 bg-indigo-400 rounded-full floating-animation opacity-50" style={{ animationDelay: '4s' }} />
-      <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-pink-400 rounded-full floating-animation opacity-80" style={{ animationDelay: '1s' }} />
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/50" />
+      
+      {/* Floating elements */}
+      <div className="absolute top-20 left-20 w-2 h-2 bg-black rounded-full float opacity-60" />
+      <div className="absolute top-40 right-32 w-1 h-1 bg-gray-400 rounded-full float opacity-40" style={{ animationDelay: '2s' }} />
+      <div className="absolute bottom-32 left-1/4 w-3 h-3 bg-gray-600 rounded-full float opacity-30" style={{ animationDelay: '4s' }} />
       
       {/* Main content */}
-      <div className="relative z-10 text-center max-w-6xl mx-auto px-6">
-        <div className="animate-fade-in">
-          <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-200 backdrop-blur-sm mb-8 hover-glow">
-            <Sparkles className="w-5 h-5 text-blue-500 mr-3" />
-            <span className="text-lg text-gray-700 font-medium">从 Markdown 到网页，瞬间完成</span>
+      <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
+        <div className="fade-in">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 border border-gray-200 mb-8">
+            <Code2 className="w-4 h-4 text-black mr-2" />
+            <span className="text-sm text-gray-700 font-medium">From Markdown to Web, Instantly</span>
           </div>
           
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
-            <span className="text-gray-800">下一代</span>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight">
+            <span className="text-black">Build with</span>
             <br />
-            <span className="text-gradient">内容工作站</span>
+            <span className="text-shine">Markdown</span>
           </h1>
           
-          <p className="text-2xl md:text-3xl text-gray-600 mb-16 max-w-4xl mx-auto leading-relaxed">
-            只需在 <code className="px-3 py-2 bg-blue-100 rounded-lg text-blue-600 font-mono">posts/</code> 目录中创建 Markdown 文件，
-            我们的智能系统将自动将其渲染为精美的网页。
+          <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+            Create beautiful websites by simply writing Markdown files in your{' '}
+            <code className="px-2 py-1 bg-gray-100 rounded text-black font-mono text-lg">posts/</code>{' '}
+            directory. No configuration needed.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             <Button 
               size="lg" 
-              className="hero-gradient text-white border-0 px-12 py-6 text-xl font-semibold group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 rounded-2xl"
+              className="bg-black text-white hover:bg-gray-800 border-0 px-8 py-4 text-lg font-medium group transition-all duration-200 rounded-lg shadow-lg hover:shadow-xl"
             >
-              开始使用
-              <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
+              Get Started
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             
             <Button 
               variant="outline" 
               size="lg"
-              className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 px-12 py-6 text-xl font-semibold backdrop-blur-sm rounded-2xl hover-glow"
+              className="border-2 border-gray-200 text-gray-700 hover:bg-gray-50 px-8 py-4 text-lg font-medium rounded-lg transition-all duration-200"
             >
-              <Code className="mr-3 w-6 h-6" />
-              查看演示
+              View Demo
             </Button>
           </div>
           
-          {/* Feature preview cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="card-gradient rounded-3xl p-8 hover:scale-105 transition-all duration-300 group backdrop-blur-sm border border-white/20 hover-glow">
-              <FileText className="w-12 h-12 text-blue-500 mb-6 group-hover:scale-110 transition-transform floating-animation" />
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">Markdown 优先</h3>
-              <p className="text-gray-600 text-lg">专注于内容创作，无需复杂的设置</p>
-            </div>
-            
-            <div className="card-gradient rounded-3xl p-8 hover:scale-105 transition-all duration-300 group backdrop-blur-sm border border-white/20 hover-glow">
-              <Zap className="w-12 h-12 text-yellow-500 mb-6 group-hover:scale-110 transition-transform floating-animation" style={{ animationDelay: '1s' }} />
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">即时渲染</h3>
-              <p className="text-gray-600 text-lg">文件保存即生成，实时预览效果</p>
-            </div>
-            
-            <div className="card-gradient rounded-3xl p-8 hover:scale-105 transition-all duration-300 group backdrop-blur-sm border border-white/20 hover-glow">
-              <Code className="w-12 h-12 text-purple-500 mb-6 group-hover:scale-110 transition-transform floating-animation" style={{ animationDelay: '2s' }} />
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">零配置</h3>
-              <p className="text-gray-600 text-lg">开箱即用，无需复杂的构建步骤</p>
+          {/* Code preview */}
+          <div className="slide-up max-w-2xl mx-auto">
+            <div className="bg-gray-900 rounded-xl p-6 text-left shadow-2xl border border-gray-200">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex space-x-2">
+                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                </div>
+                <span className="text-gray-400 text-sm font-mono">posts/hello.md</span>
+              </div>
+              <pre className="text-sm text-gray-300 font-mono">
+{`# Hello World
+
+This is my first post. It will automatically
+become a beautiful webpage at **/hello**.
+
+- No build steps
+- No configuration  
+- Just pure Markdown`}
+              </pre>
             </div>
           </div>
         </div>
       </div>
-      
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/50 to-transparent" />
     </div>
   );
 };

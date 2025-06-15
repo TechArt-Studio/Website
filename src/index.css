@@ -60,62 +60,65 @@
   }
 }
 
-/* Aceternity UI Styles */
-.spotlight {
-  background: linear-gradient(
-    110deg,
-    transparent 30%,
-    rgba(59, 130, 246, 0.1) 50%,
-    transparent 70%
-  );
-  animation: spotlight 8s ease infinite;
+/* Vercel-inspired styles */
+.vercel-gradient {
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.05) 100%);
 }
 
-@keyframes spotlight {
-  0%, 100% { transform: translateX(-100%) skewX(-15deg); }
-  50% { transform: translateX(100%) skewX(-15deg); }
+.grid-pattern {
+  background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.1) 1px, transparent 0);
+  background-size: 24px 24px;
 }
 
-.hero-gradient {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-.card-gradient {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-}
-
-.text-gradient {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+.text-shine {
+  background: linear-gradient(110deg, #000 45%, #666 50%, #000 55%);
+  background-size: 200% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: shine 2s infinite;
 }
 
-.floating-animation {
+@keyframes shine {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.8s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.float {
   animation: float 6s ease-in-out infinite;
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-
-.hover-glow:hover {
-  box-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
-}
-
-.moving-border {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(102, 126, 234, 0.4),
-    transparent
-  );
-  background-size: 200% 100%;
-  animation: move-border 3s linear infinite;
-}
-
-@keyframes move-border {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  50% { transform: translateY(-10px); }
 }

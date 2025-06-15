@@ -5,8 +5,16 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { Spotlight } from '@/components/ui/spotlight';
+import { siteConfig } from '@/config/siteConfig';
 
 const Hero = () => {
+  const handleLearnMore = () => {
+    const targetElement = document.querySelector(siteConfig.hero.ctaButton.link);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
       {/* Spotlight background effect */}
@@ -49,7 +57,7 @@ const Hero = () => {
             <Card className="relative inline-flex items-center px-4 py-2 bg-white/5 border-white/20 backdrop-blur-sm">
               <CardContent className="flex items-center space-x-2 p-0">
                 <Calendar className="w-4 h-4 text-white" />
-                <span className="text-sm text-white/90 font-medium">Meet One Calendar</span>
+                <span className="text-sm text-white/90 font-medium">{siteConfig.hero.badge.text}</span>
               </CardContent>
             </Card>
           </motion.div>
@@ -63,13 +71,13 @@ const Hero = () => {
             >
               <span className="relative inline-block">
                 <span className="absolute inset-0 bg-gradient-to-b from-white via-white to-transparent bg-clip-text text-transparent">
-                  Tech-Art
+                  {siteConfig.hero.title}
                 </span>
                 <span className="relative bg-gradient-to-b from-transparent via-transparent to-gray-400 bg-clip-text text-transparent">
-                  Tech-Art
+                  {siteConfig.hero.title}
                 </span>
                 <span className="absolute inset-0 bg-gradient-to-b from-white/90 via-gray-200 to-gray-500 bg-clip-text text-transparent opacity-80">
-                  Tech-Art
+                  {siteConfig.hero.title}
                 </span>
               </span>
             </motion.h1>
@@ -80,7 +88,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              Open a new world with code. We help protect your privacy with fast, easy, and free solutions.
+              {siteConfig.hero.subtitle}
             </motion.p>
           </div>
           
@@ -92,9 +100,10 @@ const Hero = () => {
           >
             <Button 
               size="lg" 
+              onClick={handleLearnMore}
               className="bg-white text-black hover:bg-gray-100 border-0 px-8 py-3 text-lg font-medium group transition-all duration-200 rounded-md shadow-xl"
             >
-              Learn More
+              {siteConfig.hero.ctaButton.text}
             </Button>
           </motion.div>
         </motion.div>

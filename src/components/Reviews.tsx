@@ -4,53 +4,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
+import { siteConfig } from '@/config/siteConfig';
 
 const Reviews = () => {
-  const reviews = [
-    {
-      name: "Sarah Johnson",
-      username: "@sarahj_dev",
-      avatar: "/placeholder.svg",
-      rating: 5,
-      comment: "Tech-Art's privacy-focused tools have been a game-changer for our team. Fast, reliable, and completely free!"
-    },
-    {
-      name: "Michael Chen",
-      username: "@mikechen_tech", 
-      avatar: "/placeholder.svg",
-      rating: 5,
-      comment: "One Calendar is exactly what I needed. Clean interface, no ads, and works perfectly across all devices."
-    },
-    {
-      name: "Emily Rodriguez",
-      username: "@emily_codes",
-      avatar: "/placeholder.svg", 
-      rating: 5,
-      comment: "Love the open-source approach. The deployment process is incredibly smooth with their Vercel integration."
-    },
-    {
-      name: "David Kim",
-      username: "@davidk_design",
-      avatar: "/placeholder.svg",
-      rating: 5,
-      comment: "Finally, a privacy-first solution that doesn't compromise on performance. Highly recommend Tech-Art!"
-    },
-    {
-      name: "Lisa Thompson",
-      username: "@lisa_startup",
-      avatar: "/placeholder.svg",
-      rating: 5,
-      comment: "The UI/UX design is outstanding. Everything is intuitive and the loading speeds are impressive."
-    },
-    {
-      name: "Alex Park",
-      username: "@alexpark_dev",
-      avatar: "/placeholder.svg",
-      rating: 5,
-      comment: "As a developer, I appreciate the clean code and excellent documentation. Great work by the Tech-Art team!"
-    }
-  ];
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -82,10 +38,10 @@ const Reviews = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            What Our Users Say
+            {siteConfig.reviews.title}
           </h2>
           <p className="text-xl text-gray-400">
-            Trusted by developers and teams worldwide
+            {siteConfig.reviews.subtitle}
           </p>
         </motion.div>
         
@@ -96,7 +52,7 @@ const Reviews = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {reviews.map((review, index) => (
+          {siteConfig.reviews.items.map((review, index) => (
             <motion.div
               key={index}
               variants={itemVariants}

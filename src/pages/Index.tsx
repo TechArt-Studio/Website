@@ -11,6 +11,7 @@ import Blog from '@/components/Blog';
 import PoweredBy from '@/components/PoweredBy';
 import Contact from '@/components/Contact';
 import CTA from '@/components/CTA';
+import { siteConfig } from '@/config/siteConfig';
 
 const Index = () => {
   const currentYear = new Date().getFullYear();
@@ -38,45 +39,32 @@ const Index = () => {
                 <div className="w-6 h-6 bg-white rounded-lg flex items-center justify-center">
                   <span className="text-black font-bold text-xs">T</span>
                 </div>
-                <span className="text-white font-semibold">Tech Art</span>
+                <span className="text-white font-semibold">{siteConfig.site.name}</span>
               </div>
               <p className="text-gray-400 text-sm">
-                Open a new world with code.
+                {siteConfig.site.tagline}
               </p>
             </div>
             
-            <div>
-              <h4 className="text-white font-semibold mb-4">Products</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li>One Calendar</li>
-                <li>Mail</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-semibold mb-4">Team</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li>About us</li>
-                <li>Join us</li>
-                <li>Open Source</li>
-                <li>Sustainability</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-semibold mb-4">Resource</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li>Press and Media</li>
-                <li>Contact us</li>
-                <li>Help & Docs</li>
-                <li>Live Help</li>
-              </ul>
-            </div>
+            {siteConfig.footer.sections.map((section, index) => (
+              <div key={index}>
+                <h4 className="text-white font-semibold mb-4">{section.title}</h4>
+                <ul className="space-y-2 text-gray-400 text-sm">
+                  {section.links.map((link, linkIndex) => (
+                    <li key={linkIndex}>
+                      <a href={link.link} className="hover:text-white transition-colors">
+                        {link.text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
           
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between pt-8 border-t border-white/10">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © {currentYear} Tech-Art Studio.
+              © {currentYear} {siteConfig.footer.copyright}
             </div>
           </div>
         </div>

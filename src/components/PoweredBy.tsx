@@ -2,16 +2,17 @@
 import React from 'react';
 import { Zap, Cloud, Shield, Globe, Database, Smartphone } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { siteConfig } from '@/config/siteConfig';
 
 const PoweredBy = () => {
-  const services = [
-    { icon: Zap, name: 'Vercel', description: 'Fast deployment' },
-    { icon: Cloud, name: 'Cloudflare', description: 'CDN acceleration' },
-    { icon: Shield, name: 'Security', description: 'Security protection' },
-    { icon: Globe, name: 'Global', description: 'Global network' },
-    { icon: Database, name: 'Database', description: 'Data storage' },
-    { icon: Smartphone, name: 'Mobile', description: 'Mobile optimization' }
-  ];
+  const iconMap = {
+    Zap,
+    Cloud, 
+    Shield,
+    Globe,
+    Database,
+    Smartphone
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -44,10 +45,10 @@ const PoweredBy = () => {
           transition={{ duration: 0.8 }}
         >
           <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Powered by
+            {siteConfig.poweredBy.title}
           </h3>
           <p className="text-gray-400">
-            Using industry-leading technologies and services
+            {siteConfig.poweredBy.subtitle}
           </p>
         </motion.div>
         
@@ -58,17 +59,20 @@ const PoweredBy = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="flex flex-col items-center p-4 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group"
-            >
-              <service.icon className="w-8 h-8 text-white mb-3 group-hover:scale-110 transition-transform" />
-              <h4 className="text-white font-semibold text-sm mb-1">{service.name}</h4>
-              <p className="text-gray-400 text-xs text-center">{service.description}</p>
-            </motion.div>
-          ))}
+          {siteConfig.poweredBy.services.map((service, index) => {
+            const IconComponent = iconMap[service.icon as keyof typeof iconMap];
+            return (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="flex flex-col items-center p-4 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group"
+              >
+                <IconComponent className="w-8 h-8 text-white mb-3 group-hover:scale-110 transition-transform" />
+                <h4 className="text-white font-semibold text-sm mb-1">{service.name}</h4>
+                <p className="text-gray-400 text-xs text-center">{service.description}</p>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { useBlogPosts } from '@/hooks/useBlogPosts';
 import { useNavigate, Link } from 'react-router-dom';
+import { siteConfig } from '@/config/siteConfig';
 
 const Blog = () => {
   const { posts, loading } = useBlogPosts();
@@ -44,13 +45,13 @@ const Blog = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Our Blog
+            {siteConfig.blog.title}
           </h2>
           <p className="text-xl text-gray-400">
-            Press and Media
+            {siteConfig.blog.subtitle}
           </p>
           <p className="text-lg text-gray-500 mt-2">
-            Here we will release the latest news about Tech-Art Studio, including new trends, new future plans, and new features.
+            {siteConfig.blog.description}
           </p>
         </motion.div>
         
@@ -108,13 +109,13 @@ const Blog = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Link to="/blog">
+          <Link to={siteConfig.blog.viewAllButton.link}>
             <Button 
               variant="outline" 
               size="lg"
               className="text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200 group"
             >
-              View All Posts
+              {siteConfig.blog.viewAllButton.text}
             </Button>
           </Link>
         </motion.div>

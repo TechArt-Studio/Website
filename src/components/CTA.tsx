@@ -2,13 +2,19 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import { siteConfig } from '@/config/siteConfig';
 
 const CTA = () => {
   const handleJoinClick = () => {
-    // Temporarily redirect to contact page, can be replaced with actual link later
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
+    // Navigate to contact section or custom link
+    const targetLink = siteConfig.cta.button.link;
+    if (targetLink.startsWith('#')) {
+      const contactSection = document.getElementById(targetLink.substring(1));
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.location.href = targetLink;
     }
   };
 
@@ -29,10 +35,10 @@ const CTA = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-            Join Tech-Art Now
+            {siteConfig.cta.title}
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto font-light">
-            Join us to open a new world of code and experience fast, simple, and free privacy protection solutions
+            {siteConfig.cta.subtitle}
           </p>
           
           <motion.div 
@@ -47,7 +53,7 @@ const CTA = () => {
               onClick={handleJoinClick}
               className="bg-white text-black hover:bg-gray-100 border-0 px-8 py-4 text-lg font-medium transition-all duration-200 rounded-lg shadow-lg hover:shadow-xl group"
             >
-              Join Now
+              {siteConfig.cta.button.text}
             </Button>
           </motion.div>
         </motion.div>

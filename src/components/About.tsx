@@ -4,28 +4,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { motion } from 'framer-motion';
 import { Zap, Heart, Gift } from 'lucide-react';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
+import { siteConfig } from '@/config/siteConfig';
 
 const About = () => {
-  const features = [
-    { 
-      icon: Zap,
-      title: "Fast", 
-      subtitle: "Performance", 
-      description: "Lightning-fast applications built for speed" 
-    },
-    { 
-      icon: Heart,
-      title: "Easy", 
-      subtitle: "To Use", 
-      description: "Intuitive interfaces that anyone can master" 
-    },
-    { 
-      icon: Gift,
-      title: "Free", 
-      subtitle: "Always", 
-      description: "Open-source and completely free forever" 
-    }
-  ];
+  const iconMap = {
+    Zap,
+    Heart,
+    Gift
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -66,7 +52,7 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2, duration: 0.8 }}
               >
-                What is Tech-Art?
+                {siteConfig.about.title}
               </motion.h2>
               <motion.p 
                 className="text-xl text-gray-300 leading-relaxed mb-8"
@@ -75,7 +61,7 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.4, duration: 0.8 }}
               >
-                Tech-Art is a studio founded in China whose main mission is to help protect your privacy.
+                {siteConfig.about.description}
               </motion.p>
             </div>
             
@@ -86,44 +72,47 @@ const About = () => {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  transition={{
-                    duration: 0.6,
-                    ease: [0.25, 0.46, 0.45, 0.94]
-                  }}
-                  className="relative h-full rounded-2xl border border-white/10 p-2"
-                >
-                  <GlowingEffect
-                    spread={40}
-                    glow={true}
-                    disabled={false}
-                    proximity={64}
-                    inactiveZone={0.01}
-                  />
-                  <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl bg-black/40 backdrop-blur-sm p-6 border border-white/5 hover:bg-white/10 transition-all duration-300 group">
-                    <div className="relative flex flex-1 flex-col justify-between gap-4">
-                      <motion.div 
-                        className="inline-flex p-2 rounded-lg bg-white/10 mb-3 group-hover:bg-white group-hover:text-black transition-all duration-300 w-fit"
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <feature.icon className="w-5 h-5 text-white group-hover:text-black" />
-                      </motion.div>
-                      <div className="space-y-3">
-                        <h3 className="text-lg font-semibold text-white">
-                          {feature.title}
-                        </h3>
-                        <p className="text-sm text-gray-300 leading-relaxed">
-                          {feature.description}
-                        </p>
+              {siteConfig.about.features.map((feature, index) => {
+                const IconComponent = iconMap[feature.icon as keyof typeof iconMap];
+                return (
+                  <motion.div
+                    key={index}
+                    variants={itemVariants}
+                    transition={{
+                      duration: 0.6,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }}
+                    className="relative h-full rounded-2xl border border-white/10 p-2"
+                  >
+                    <GlowingEffect
+                      spread={40}
+                      glow={true}
+                      disabled={false}
+                      proximity={64}
+                      inactiveZone={0.01}
+                    />
+                    <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl bg-black/40 backdrop-blur-sm p-6 border border-white/5 hover:bg-white/10 transition-all duration-300 group">
+                      <div className="relative flex flex-1 flex-col justify-between gap-4">
+                        <motion.div 
+                          className="inline-flex p-2 rounded-lg bg-white/10 mb-3 group-hover:bg-white group-hover:text-black transition-all duration-300 w-fit"
+                          whileHover={{ rotate: 360 }}
+                          transition={{ duration: 0.5 }}
+                        >
+                          <IconComponent className="w-5 h-5 text-white group-hover:text-black" />
+                        </motion.div>
+                        <div className="space-y-3">
+                          <h3 className="text-lg font-semibold text-white">
+                            {feature.title}
+                          </h3>
+                          <p className="text-sm text-gray-300 leading-relaxed">
+                            {feature.description}
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </motion.div>
           </motion.div>
           

@@ -59,7 +59,7 @@ const Reviews = () => {
                   </div>
                   
                   <p className="text-gray-300 mb-6 leading-relaxed">
-                    "{review.content}"
+                    "{review.comment}"
                   </p>
                   
                   <div className="flex items-center">
@@ -71,7 +71,7 @@ const Reviews = () => {
                     </Avatar>
                     <div>
                       <h4 className="text-white font-medium">{review.name}</h4>
-                      <p className="text-gray-400 text-sm">{review.role}</p>
+                      <p className="text-gray-400 text-sm">{review.username}</p>
                     </div>
                   </div>
                 </CardContent>

@@ -33,6 +33,19 @@ const Navigation = () => {
     { name: 'Contact', href: '#contact' },
   ];
 
+  const handleSmoothScroll = (href: string) => {
+    if (href.startsWith('#')) {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+    }
+    setIsOpen(false);
+  };
+
   return (
     <motion.nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -44,17 +57,13 @@ const Navigation = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <motion.div 
-            className="flex items-center space-x-3"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
-          >
+          {/* Logo - removed hover scale animation */}
+          <div className="flex items-center space-x-3">
             <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
               <span className="text-black font-bold text-sm">T</span>
             </div>
             <span className="text-white font-bold text-xl">Tech-Art</span>
-          </motion.div>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -69,7 +78,11 @@ const Navigation = () => {
                     >
                       <NavigationMenuLink
                         href={item.href}
-                        className="text-gray-300 hover:text-white transition-colors duration-200 text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/5"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleSmoothScroll(item.href);
+                        }}
+                        className="text-gray-300 hover:text-white transition-colors duration-200 text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/5 cursor-pointer"
                       >
                         {item.name}
                       </NavigationMenuLink>
@@ -89,7 +102,7 @@ const Navigation = () => {
             </motion.div>
           </div>
 
-          {/* About Button - 桌面端最右边 */}
+          {/* About Button - Desktop */}
           <motion.div
             className="hidden md:block"
             whileHover={{ scale: 1.05 }}
@@ -102,7 +115,7 @@ const Navigation = () => {
             </Link>
           </motion.div>
 
-          {/* Mobile - 右侧按钮组合，调整到更左边一些 */}
+          {/* Mobile - Right side button group */}
           <div className="md:hidden flex items-center space-x-3 mr-2">
             <Link to="/about">
               <Button variant="outline" size="sm" className="text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200 text-xs px-3 py-2">
@@ -144,7 +157,7 @@ const Navigation = () => {
                     <Button
                       variant="ghost"
                       className="text-gray-300 hover:text-white hover:bg-white/10 justify-start px-4 py-3 text-base w-full rounded-lg transition-all duration-200"
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => handleSmoothScroll(item.href)}
                     >
                       {item.name}
                     </Button>
@@ -162,7 +175,7 @@ const Navigation = () => {
                   <Button
                     variant="ghost"
                     className="text-gray-300 hover:text-white hover:bg-white/10 justify-start px-4 py-3 text-base w-full rounded-lg transition-all duration-200"
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => handleSmoothScroll('#contact')}
                   >
                     <Mail className="w-4 h-4 mr-2" />
                     Contact

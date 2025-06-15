@@ -4,7 +4,7 @@ export const siteConfig = {
   site: {
     name: "Tech Art",
     tagline: "Open a new world with code",
-    description: "We help protect your privacy with fast, easy, and free solutions.",
+    description: "We help you build fast, easy, and free solutions.",
     logo: "/favicon.ico"
   },
 
@@ -15,7 +15,7 @@ export const siteConfig = {
       text: "Meet One Calendar"
     },
     title: "Tech-Art",
-    subtitle: "Open a new world with code. We help protect your privacy with fast, easy, and free solutions.",
+    subtitle: "Open a new world with code. We help you build fast, easy, and free solutions.",
     ctaButton: {
       text: "Learn More",
       link: "#features"
@@ -52,7 +52,7 @@ export const siteConfig = {
   // About Section
   about: {
     title: "What is Tech-Art?",
-    description: "Tech-Art is a studio founded in China whose main mission is to help protect your privacy.",
+    description: "Tech-Art is a studio founded in China whose main mission is to help you build amazing applications.",
     features: [
       {
         icon: "Zap",
@@ -85,7 +85,7 @@ export const siteConfig = {
         username: "@sarahj_dev",
         avatar: "/placeholder.svg",
         rating: 5,
-        comment: "Tech-Art's privacy-focused tools have been a game-changer for our team. Fast, reliable, and completely free!"
+        comment: "Tech-Art's tools have been a game-changer for our team. Fast, reliable, and completely free!"
       },
       {
         name: "Michael Chen",
@@ -106,7 +106,7 @@ export const siteConfig = {
         username: "@davidk_design",
         avatar: "/placeholder.svg",
         rating: 5,
-        comment: "Finally, a privacy-first solution that doesn't compromise on performance. Highly recommend Tech-Art!"
+        comment: "Finally, a solution that doesn't compromise on performance. Highly recommend Tech-Art!"
       },
       {
         name: "Lisa Thompson",
@@ -153,7 +153,7 @@ export const siteConfig = {
   // CTA Section
   cta: {
     title: "Join Tech-Art Now",
-    subtitle: "Join us to open a new world of code and experience fast, simple, and free privacy protection solutions",
+    subtitle: "Join us to open a new world of code and experience fast, simple, and free solutions",
     button: {
       text: "Join Now",
       link: "#contact"

@@ -10,6 +10,8 @@ import Blog from '@/components/Blog';
 import Contact from '@/components/Contact';
 
 const Index = () => {
+  const currentYear = new Date().getFullYear();
+  
   return (
     <div className="min-h-screen bg-black">
       <Navigation />
@@ -68,7 +70,7 @@ const Index = () => {
           
           <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2024 Tech-Art Studio. Protecting your privacy.
+              © {currentYear} Tech-Art Studio.
             </div>
           </div>
         </div>

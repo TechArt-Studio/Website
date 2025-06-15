@@ -1,19 +1,32 @@
 
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
 import { motion } from 'framer-motion';
 import { useBlogPosts } from '@/hooks/useBlogPosts';
 import { useNavigate, Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Search } from 'lucide-react';
 
 const BlogList = () => {
   const { posts, loading } = useBlogPosts();
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handlePostClick = (slug: string) => {
     navigate(`/${slug}`);
   };
+
+  // 过滤博客文章
+  const filteredPosts = useMemo(() => {
+    if (!searchQuery) return posts;
+    
+    return posts.filter(post => 
+      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (post.tag && post.tag.toLowerCase().includes(searchQuery.toLowerCase()))
+    );
+  }, [posts, searchQuery]);
 
   if (loading) {
     return (
@@ -22,6 +35,8 @@ const BlogList = () => {
       </div>
     );
   }
+
+  const currentYear = new Date().getFullYear();
 
   return (
     <div className="min-h-screen bg-black">
@@ -43,7 +58,7 @@ const BlogList = () => {
           
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              All Blog Posts
+              Blog
             </h1>
             <p className="text-xl text-gray-400">
               Press and Media
@@ -53,8 +68,22 @@ const BlogList = () => {
             </p>
           </div>
           
+          {/* 搜索框 */}
+          <div className="max-w-md mx-auto mb-12">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Input
+                type="text"
+                placeholder="Search blog posts..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10 bg-white/5 border-white/10 text-white placeholder:text-gray-400 focus:border-white/20 focus:bg-white/10"
+              />
+            </div>
+          </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post, index) => (
+            {filteredPosts.map((post, index) => (
               <motion.div
                 key={post.slug}
                 initial={{ opacity: 0, y: 30 }}
@@ -85,6 +114,12 @@ const BlogList = () => {
               </motion.div>
             ))}
           </div>
+          
+          {filteredPosts.length === 0 && searchQuery && (
+            <div className="text-center py-12">
+              <p className="text-gray-400">No blog posts found matching your search.</p>
+            </div>
+          )}
         </motion.div>
       </div>
       
@@ -135,7 +170,7 @@ const BlogList = () => {
           
           <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2024 Tech-Art Studio. Protecting your privacy.
+              © {currentYear} Tech-Art Studio.
             </div>
           </div>
         </div>

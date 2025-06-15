@@ -210,6 +210,8 @@ TOTP remains one of the most reliable forms of two-factor authentication availab
     );
   }
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className="min-h-screen bg-black">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -232,12 +234,16 @@ TOTP remains one of the most reliable forms of two-factor authentication availab
                 {post.tag}
               </span>
             )}
+            
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{post.title}</h1>
+            <p className="text-xl text-gray-400 mb-4">{post.description}</p>
             <div className="text-gray-400 mb-8">{post.date}</div>
+            
             <div className="markdown-content">
               <ReactMarkdown 
                 remarkPlugins={[remarkGfm]}
                 components={{
-                  h1: ({children}) => <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">{children}</h1>,
+                  h1: ({children}) => <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 mt-8">{children}</h2>,
                   h2: ({children}) => <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 mt-8">{children}</h2>,
                   h3: ({children}) => <h3 className="text-xl md:text-2xl font-bold text-white mb-3 mt-6">{children}</h3>,
                   h4: ({children}) => <h4 className="text-lg md:text-xl font-bold text-white mb-2 mt-4">{children}</h4>,
@@ -306,7 +312,7 @@ TOTP remains one of the most reliable forms of two-factor authentication availab
           
           <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2024 Tech-Art Studio. Protecting your privacy.
+              © {currentYear} Tech-Art Studio.
             </div>
           </div>
         </div>

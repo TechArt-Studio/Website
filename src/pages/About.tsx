@@ -15,7 +15,18 @@ const About = () => {
   useEffect(() => {
     const loadAboutContent = async () => {
       try {
-        const aboutContent = `# About Tech-Art Studio
+        // 从 markdown 文件加载内容
+        const response = await fetch('/src/posts/about.md');
+        const text = await response.text();
+        
+        // 移除 frontmatter (--- 之间的内容)
+        const contentWithoutFrontmatter = text.replace(/^---[\s\S]*?---\n/, '');
+        
+        setContent(contentWithoutFrontmatter);
+      } catch (error) {
+        console.error('Error loading about content:', error);
+        // 如果加载失败，使用备用内容
+        const fallbackContent = `# About Tech-Art Studio
 
 Tech-Art Studio is a cutting-edge technology company founded in China with a mission to revolutionize digital development and user experience. We believe that technology should empower users and provide exceptional functionality.
 
@@ -64,7 +75,7 @@ In a world where many technology companies focus on complex solutions, Tech-Art 
 - Complete control over your experience
 - Transparent development practices
 - Cutting-edge technology
-- Responsive customer support
+- Responsive customer support  
 - A commitment to continuous improvement
 
 ## Contact Us
@@ -77,9 +88,7 @@ We're always excited to hear from our users and the broader community. Whether y
 
 *Tech-Art Studio - Opening a new world with code, building exceptional experiences every step of the way.*`;
         
-        setContent(aboutContent);
-      } catch (error) {
-        console.error('Error loading about content:', error);
+        setContent(fallbackContent);
       } finally {
         setLoading(false);
       }
@@ -119,7 +128,26 @@ We're always excited to hear from our users and the broader community. Whether y
           </Link>
 
           <article className="prose prose-invert prose-lg max-w-none">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            <ReactMarkdown 
+              remarkPlugins={[remarkGfm]}
+              components={{
+                h1: ({children}) => <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 mt-8">{children}</h1>,
+                h2: ({children}) => <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 mt-8">{children}</h2>,
+                h3: ({children}) => <h3 className="text-xl md:text-2xl font-bold text-white mb-3 mt-6">{children}</h3>,
+                h4: ({children}) => <h4 className="text-lg md:text-xl font-bold text-white mb-2 mt-4">{children}</h4>,
+                p: ({children}) => <p className="text-gray-300 leading-relaxed mb-4">{children}</p>,
+                ul: ({children}) => <ul className="text-gray-300 mb-4 list-disc list-inside space-y-2">{children}</ul>,
+                ol: ({children}) => <ol className="text-gray-300 mb-4 list-decimal list-inside space-y-2">{children}</ol>,
+                li: ({children}) => <li className="text-gray-300">{children}</li>,
+                strong: ({children}) => <strong className="text-white font-semibold">{children}</strong>,
+                code: ({children}) => <code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">{children}</code>,
+                pre: ({children}) => <pre className="bg-gray-900 border border-gray-700 rounded-lg p-4 overflow-x-auto mb-4">{children}</pre>,
+                blockquote: ({children}) => <blockquote className="border-l-4 border-gray-600 pl-4 italic text-gray-400 mb-4">{children}</blockquote>,
+                a: ({href, children}) => <a href={href} className="text-blue-400 hover:text-blue-300 underline">{children}</a>,
+                hr: () => <hr className="border-gray-600 my-8" />,
+                em: ({children}) => <em className="text-gray-400 italic">{children}</em>,
+              }}
+            >
               {content}
             </ReactMarkdown>
           </article>

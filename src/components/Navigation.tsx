@@ -90,31 +90,16 @@ const Navigation = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Mobile Layout - Tech-Art左边，汉堡按钮右边 */}
-        <div className="md:hidden flex items-center justify-between h-16">
-          {/* Logo - 固定左边位置 */}
-          <div className="flex-shrink-0">
-            <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-              <img 
-                src={siteConfig.site.logo} 
-                alt="Tech-Art Logo" 
-                className="w-7 h-7"
-              />
-              <span className="text-white font-bold text-lg">Tech-Art</span>
-            </Link>
-          </div>
-
-          {/* Mobile Menu Button - 固定右边位置 */}
-          <motion.div whileTap={{ scale: 0.9 }} className="flex-shrink-0">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-white hover:text-gray-300 hover:bg-white/10 p-2"
-            >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </Button>
-          </motion.div>
+        {/* Mobile Layout - 只显示居中的Tech-Art */}
+        <div className="md:hidden flex items-center justify-center h-16">
+          <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+            <img 
+              src={siteConfig.site.logo} 
+              alt="Tech-Art Logo" 
+              className="w-7 h-7"
+            />
+            <span className="text-white font-bold text-lg">Tech-Art</span>
+          </Link>
         </div>
 
         {/* Desktop Layout - 保持原样 */}

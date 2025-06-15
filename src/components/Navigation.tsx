@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -89,118 +90,73 @@ const Navigation = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Mobile Layout - 只显示居中的Tech-Art */}
-        <div className="md:hidden flex items-center justify-center h-16">
-          <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-            <img 
-              src={siteConfig.site.logo} 
-              alt="Tech-Art Logo" 
-              className="w-7 h-7"
-            />
-            <span className="text-white font-bold text-lg">Tech-Art</span>
-          </Link>
-        </div>
+      {/* Mobile Layout - 完全居中的Tech-Art，移除所有padding影响 */}
+      <div className="md:hidden w-full h-16 flex items-center justify-center">
+        <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+          <img 
+            src={siteConfig.site.logo} 
+            alt="Tech-Art Logo" 
+            className="w-7 h-7"
+          />
+          <span className="text-white font-bold text-lg">Tech-Art</span>
+        </Link>
+      </div>
 
-        {/* Desktop Layout - 保持原样 */}
-        <div className="hidden md:flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-            <img 
-              src={siteConfig.site.logo} 
-              alt="Tech-Art Logo" 
-              className="w-8 h-8"
-            />
-            <span className="text-white font-bold text-xl">Tech-Art</span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="flex items-center space-x-8">
-            <NavigationMenu>
-              <NavigationMenuList className="space-x-6">
-                {navItems.map((item, index) => (
-                  <NavigationMenuItem key={item.name}>
-                    <motion.div
-                      initial={{ opacity: 0, y: -20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.1 * index, duration: 0.5 }}
-                    >
-                      <NavigationMenuLink
-                        href={item.href}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleSmoothScroll(item.href);
-                        }}
-                        className="text-gray-300 hover:text-white transition-colors duration-200 text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/5 cursor-pointer"
-                      >
-                        {item.name}
-                      </NavigationMenuLink>
-                    </motion.div>
-                  </NavigationMenuItem>
-                ))}
-              </NavigationMenuList>
-            </NavigationMenu>
-          </div>
-
-          {/* Desktop About Button */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Link to="/about">
-              <Button variant="outline" size="sm" className="text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200">
-                About
-              </Button>
+      {/* Desktop Layout - 保持原样 */}
+      <div className="hidden md:block">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+              <img 
+                src={siteConfig.site.logo} 
+                alt="Tech-Art Logo" 
+                className="w-8 h-8"
+              />
+              <span className="text-white font-bold text-xl">Tech-Art</span>
             </Link>
-          </motion.div>
-        </div>
 
-        {/* Mobile Menu - 全屏覆盖式设计，包含About选项 */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div 
-              className="md:hidden fixed inset-0 top-16 bg-black/95 backdrop-blur-xl z-40"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
+            {/* Desktop Navigation */}
+            <div className="flex items-center space-x-8">
+              <NavigationMenu>
+                <NavigationMenuList className="space-x-6">
+                  {navItems.map((item, index) => (
+                    <NavigationMenuItem key={item.name}>
+                      <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 * index, duration: 0.5 }}
+                      >
+                        <NavigationMenuLink
+                          href={item.href}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleSmoothScroll(item.href);
+                          }}
+                          className="text-gray-300 hover:text-white transition-colors duration-200 text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/5 cursor-pointer"
+                        >
+                          {item.name}
+                        </NavigationMenuLink>
+                      </motion.div>
+                    </NavigationMenuItem>
+                  ))}
+                </NavigationMenuList>
+              </NavigationMenu>
+            </div>
+
+            {/* Desktop About Button */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <div className="px-6 py-8 space-y-2">
-                {navItems.map((item, index) => (
-                  <motion.div
-                    key={item.name}
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 * index, duration: 0.3 }}
-                  >
-                    <button
-                      className="w-full text-left text-gray-300 hover:text-white hover:bg-white/10 px-4 py-4 text-lg rounded-lg transition-all duration-200 font-medium"
-                      onClick={() => handleSmoothScroll(item.href)}
-                    >
-                      {item.name}
-                    </button>
-                  </motion.div>
-                ))}
-                
-                <motion.div
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.6, duration: 0.3 }}
-                  className="pt-6 border-t border-white/10"
-                >
-                  <Link to="/about" onClick={() => setIsOpen(false)}>
-                    <Button 
-                      variant="outline" 
-                      className="w-full text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200 py-4 text-lg font-medium"
-                    >
-                      About
-                    </Button>
-                  </Link>
-                </motion.div>
-              </div>
+              <Link to="/about">
+                <Button variant="outline" size="sm" className="text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200">
+                  About
+                </Button>
+              </Link>
             </motion.div>
-          )}
-        </AnimatePresence>
+          </div>
+        </div>
       </div>
     </motion.nav>
   );

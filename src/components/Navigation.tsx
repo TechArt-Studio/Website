@@ -83,79 +83,65 @@ const Navigation = () => {
 
   return (
     <motion.nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`hidden md:block fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? 'bg-black/90 backdrop-blur-xl border-b border-white/10' : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      {/* Mobile Layout - 完全居中的Tech-Art，移除所有padding影响 */}
-      <div className="md:hidden w-full h-16 flex items-center justify-center">
-        <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-          <img 
-            src={siteConfig.site.logo} 
-            alt="Tech-Art Logo" 
-            className="w-7 h-7"
-          />
-          <span className="text-white font-bold text-lg">Tech-Art</span>
-        </Link>
-      </div>
+      {/* Desktop Layout Only */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+            <img 
+              src={siteConfig.site.logo} 
+              alt="Tech-Art Logo" 
+              className="w-8 h-8"
+            />
+            <span className="text-white font-bold text-xl">Tech-Art</span>
+          </Link>
 
-      {/* Desktop Layout - 保持原样 */}
-      <div className="hidden md:block">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-              <img 
-                src={siteConfig.site.logo} 
-                alt="Tech-Art Logo" 
-                className="w-8 h-8"
-              />
-              <span className="text-white font-bold text-xl">Tech-Art</span>
-            </Link>
-
-            {/* Desktop Navigation */}
-            <div className="flex items-center space-x-8">
-              <NavigationMenu>
-                <NavigationMenuList className="space-x-6">
-                  {navItems.map((item, index) => (
-                    <NavigationMenuItem key={item.name}>
-                      <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 * index, duration: 0.5 }}
+          {/* Desktop Navigation */}
+          <div className="flex items-center space-x-8">
+            <NavigationMenu>
+              <NavigationMenuList className="space-x-6">
+                {navItems.map((item, index) => (
+                  <NavigationMenuItem key={item.name}>
+                    <motion.div
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1 * index, duration: 0.5 }}
+                    >
+                      <NavigationMenuLink
+                        href={item.href}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleSmoothScroll(item.href);
+                        }}
+                        className="text-gray-300 hover:text-white transition-colors duration-200 text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/5 cursor-pointer"
                       >
-                        <NavigationMenuLink
-                          href={item.href}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleSmoothScroll(item.href);
-                          }}
-                          className="text-gray-300 hover:text-white transition-colors duration-200 text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/5 cursor-pointer"
-                        >
-                          {item.name}
-                        </NavigationMenuLink>
-                      </motion.div>
-                    </NavigationMenuItem>
-                  ))}
-                </NavigationMenuList>
-              </NavigationMenu>
-            </div>
-
-            {/* Desktop About Button */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link to="/about">
-                <Button variant="outline" size="sm" className="text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200">
-                  About
-                </Button>
-              </Link>
-            </motion.div>
+                        {item.name}
+                      </NavigationMenuLink>
+                    </motion.div>
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
           </div>
+
+          {/* Desktop About Button */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link to="/about">
+              <Button variant="outline" size="sm" className="text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200">
+                About
+              </Button>
+            </Link>
+          </motion.div>
         </div>
       </div>
     </motion.nav>

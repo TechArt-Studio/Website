@@ -9,8 +9,8 @@ import { GlowingEffect } from '@/components/ui/glowing-effect';
 const Reviews = () => {
   const reviews = [
     {
-      name: "Pranav",
-      username: "@pranavxmeta",
+      name: "Muhammad Fahad",
+      username: "@engr.fahad_",
       avatar: "/lovable-uploads/2de234b1-b328-4458-a6fc-9a68e1f868d9.png",
       rating: 5,
       comment: "Perfect 👍"

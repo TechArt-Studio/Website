@@ -11,16 +11,21 @@ const Hero = () => {
       {/* Grid background */}
       <div className="absolute inset-0 grid-pattern opacity-20" />
       
-      {/* 从左上角无视padding的斜打光，直接打向标题 */}
-      <div className="absolute -top-32 -left-32 w-[1000px] h-[1000px] opacity-40">
-        <div className="w-full h-full bg-gradient-conic from-white/40 via-white/15 to-transparent rounded-full blur-3xl transform rotate-45" />
+      {/* 调整打光效果，避免在移动端造成黑色遮罩 */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-30 hidden md:block">
+        <div className="absolute -top-32 -left-32 w-[1000px] h-[1000px]">
+          <div className="w-full h-full bg-gradient-conic from-white/40 via-white/15 to-transparent rounded-full blur-3xl transform rotate-45" />
+        </div>
       </div>
       
-      {/* 更精准的聚焦打光 */}
-      <div className="absolute top-1/3 left-1/3 w-[600px] h-[400px] bg-gradient-radial from-white/30 via-white/10 to-transparent rounded-full blur-3xl transform -translate-x-48 -translate-y-24 -rotate-12" />
+      {/* 移动端优化的打光效果 */}
+      <div className="absolute top-1/4 left-1/2 w-[300px] h-[300px] bg-gradient-radial from-white/20 via-white/5 to-transparent rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2 md:hidden" />
       
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
+      {/* 桌面端的精准打光 */}
+      <div className="absolute top-1/3 left-1/3 w-[600px] h-[400px] bg-gradient-radial from-white/30 via-white/10 to-transparent rounded-full blur-3xl transform -translate-x-48 -translate-y-24 -rotate-12 hidden md:block" />
+      
+      {/* Gradient overlay - 调整移动端的渐变 */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/40 md:from-black/20" />
       
       {/* Main content */}
       <div className="relative z-10 text-center max-w-4xl mx-auto px-4 py-20">
@@ -50,7 +55,6 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              {/* 金属质感效果 - 字体上半部分白色，下半部分灰银色 */}
               <span className="relative inline-block">
                 <span className="absolute inset-0 bg-gradient-to-b from-white via-white to-transparent bg-clip-text text-transparent">
                   Tech-Art

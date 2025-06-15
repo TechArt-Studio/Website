@@ -13,7 +13,7 @@ const About = () => {
     <section id="about" className="py-24 bg-black relative">
       <div className="absolute inset-0 grid-pattern opacity-5" />
       
-      <div className="relative max-w-6xl mx-auto px-8 sm:px-6 lg:px-8">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-8 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div 
             className="space-y-8"

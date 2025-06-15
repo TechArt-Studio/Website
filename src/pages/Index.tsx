@@ -24,7 +24,7 @@ const Index = () => {
       
       {/* Footer */}
       <footer className="py-16 bg-black border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-8 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div className="space-y-4">
               <div className="flex items-center space-x-2">

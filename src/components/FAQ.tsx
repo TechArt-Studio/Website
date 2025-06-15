@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   Accordion,
@@ -32,7 +31,7 @@ const FAQ = () => {
     <section className="py-24 bg-black relative">
       <div className="absolute inset-0 grid-pattern opacity-10" />
       
-      <div className="relative max-w-4xl mx-auto px-6 sm:px-6 lg:px-8">
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-8 lg:px-8">
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}

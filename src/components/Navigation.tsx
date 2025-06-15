@@ -87,29 +87,31 @@ const Navigation = () => {
                 <Mail className="w-4 h-4" />
               </Button>
             </motion.div>
-
-            {/* About Button - 最右边 */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link to="/about">
-                <Button variant="outline" size="sm" className="text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200">
-                  About
-                </Button>
-              </Link>
-            </motion.div>
           </div>
+
+          {/* About Button - 最右边 */}
+          <motion.div
+            className="hidden md:block"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link to="/about">
+              <Button variant="outline" size="sm" className="text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200">
+                About
+              </Button>
+            </Link>
+          </motion.div>
 
           {/* Mobile menu button */}
           <motion.div
+            className="md:hidden"
             whileTap={{ scale: 0.9 }}
           >
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden text-white hover:text-gray-300 hover:bg-white/10"
+              className="text-white hover:text-gray-300 hover:bg-white/10"
             >
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </Button>

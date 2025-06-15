@@ -75,7 +75,7 @@ const Hero = () => {
           </div>
           
           <motion.div 
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6"
+            className="flex justify-center items-center pt-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
@@ -86,15 +86,6 @@ const Hero = () => {
             >
               Learn More
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="border-2 border-white/30 text-white hover:bg-white/10 px-8 py-3 text-lg font-medium rounded-md transition-all duration-200 backdrop-blur-sm overflow-hidden"
-            >
-              <Calendar className="mr-2 w-5 h-5" />
-              Try One Calendar
             </Button>
           </motion.div>
         </motion.div>

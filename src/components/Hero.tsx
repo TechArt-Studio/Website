@@ -53,7 +53,7 @@ const Hero = () => {
                 proximity={200}
                 blur={20}
                 spread={80}
-                className="opacity-50"
+                className="opacity-60"
               />
               <Card className="relative inline-flex items-center px-4 py-2 bg-white/5 border-white/20 backdrop-blur-sm">
                 <CardContent className="flex items-center space-x-2 p-0">
@@ -106,7 +106,7 @@ const Hero = () => {
                 proximity={150}
                 blur={15}
                 spread={60}
-                className="opacity-60"
+                className="opacity-80"
               />
               <Button 
                 size="lg" 

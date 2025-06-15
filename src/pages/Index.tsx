@@ -36,9 +36,11 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 bg-white rounded-lg flex items-center justify-center">
-                  <span className="text-black font-bold text-xs">T</span>
-                </div>
+                <img 
+                  src={siteConfig.site.logo} 
+                  alt="Tech-Art Logo" 
+                  className="w-6 h-6"
+                />
                 <span className="text-white font-semibold">{siteConfig.site.name}</span>
               </div>
               <p className="text-gray-400 text-sm">

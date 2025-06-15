@@ -4,6 +4,7 @@ import { Menu, X, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { siteConfig } from '@/config/siteConfig';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -59,9 +60,11 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo - clickable and links to homepage */}
           <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-            <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-              <span className="text-black font-bold text-sm">T</span>
-            </div>
+            <img 
+              src={siteConfig.site.logo} 
+              alt="Tech-Art Logo" 
+              className="w-8 h-8"
+            />
             <span className="text-white font-bold text-xl">Tech-Art</span>
           </Link>
 

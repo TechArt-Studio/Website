@@ -3,7 +3,7 @@ import { Zap, Cloud, Shield, Globe, Database, Smartphone, Github } from 'lucide-
 import { motion } from 'framer-motion';
 import { siteConfig } from '@/config/siteConfig';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
-import { VercelLogo, CloudflareLogo } from '@/components/ui/service-logos';
+import { VercelLogo, CloudflareLogo, GitHubLogo, ClerkLogo } from '@/components/ui/service-logos';
 
 const PoweredBy = () => {
   const iconMap = {
@@ -15,7 +15,9 @@ const PoweredBy = () => {
     Smartphone,
     Github,
     VercelLogo,
-    CloudflareLogo
+    CloudflareLogo,
+    GitHubLogo,
+    ClerkLogo
   };
 
   const containerVariants = {

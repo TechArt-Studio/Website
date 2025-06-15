@@ -1,11 +1,10 @@
-
 export const siteConfig = {
   // Site Information
   site: {
     name: "Tech Art",
     tagline: "Open a new world with code",
     description: "We help you build fast, easy, and free solutions.",
-    logo: "/favicon.ico"
+    logo: "https://docs.xyehr.cn/images/logo-dark.svg"
   },
 
   // Hero Section
@@ -143,8 +142,8 @@ export const siteConfig = {
     services: [
       { icon: "VercelLogo", name: "Vercel", description: "Fast deployment" },
       { icon: "CloudflareLogo", name: "Cloudflare", description: "CDN acceleration" },
-      { icon: "Github", name: "GitHub", description: "Version control" },
-      { icon: "Shield", name: "Clerk", description: "Authentication" }
+      { icon: "GitHubLogo", name: "GitHub", description: "Version control" },
+      { icon: "ClerkLogo", name: "Clerk", description: "Authentication" }
     ]
   },
 

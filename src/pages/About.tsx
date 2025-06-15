@@ -97,7 +97,7 @@ We're always excited to hear from our users and the broader community. Whether y
 
   return (
     <div className="min-h-screen bg-black">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-4xl mx-auto px-6 sm:px-6 lg:px-8 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

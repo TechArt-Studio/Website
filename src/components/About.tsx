@@ -14,7 +14,7 @@ const About = () => {
     <section id="about" className="py-24 bg-black relative">
       <div className="absolute inset-0 grid-pattern opacity-5" />
       
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-6xl mx-auto px-6 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div 
             className="space-y-8"
@@ -59,7 +59,7 @@ const About = () => {
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 * index, duration: 0.6 }}
                 >
-                  <Card className={`bg-gradient-to-r ${item.color} border-white/20 transition-all duration-300 hover:border-white/30 backdrop-blur-sm`}>
+                  <Card className="bg-gray-900/50 border-gray-800 hover:bg-gray-800/50 transition-all duration-300 backdrop-blur-sm">
                     <CardContent className="p-6 flex items-center space-x-4">
                       <div className="w-16 h-16 bg-gradient-to-br from-white/30 to-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
                         <span className="text-2xl font-bold text-white">{item.title.charAt(0)}</span>

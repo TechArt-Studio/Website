@@ -146,10 +146,10 @@ const Navigation = () => {
             </Link>
           </motion.div>
 
-          {/* Mobile - Right side button group - 调整间距让汉堡菜单更靠左 */}
-          <div className="md:hidden flex items-center space-x-2">
+          {/* Mobile - Right side button group - 进一步调整汉堡菜单位置 */}
+          <div className="md:hidden flex items-center space-x-1">
             <Link to="/about">
-              <Button variant="outline" size="sm" className="text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200 text-xs px-3 py-2">
+              <Button variant="outline" size="sm" className="text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200 text-xs px-2 py-1.5">
                 About
               </Button>
             </Link>
@@ -159,7 +159,7 @@ const Navigation = () => {
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-white hover:text-gray-300 hover:bg-white/10 p-2"
+                className="text-white hover:text-gray-300 hover:bg-white/10 p-1.5"
               >
                 {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </Button>

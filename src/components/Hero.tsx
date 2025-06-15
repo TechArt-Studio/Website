@@ -17,8 +17,8 @@ const Hero = () => {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* Spotlight background effect - 移动端优化位置和大小 */}
-      <Spotlight className="-top-60 -left-20 md:-top-40 md:left-0 md:md:left-60 md:-top-20 w-[200%] h-[200%] md:w-[138%] md:h-[169%] lg:w-[84%]" fill="white" />
+      {/* Spotlight background effect - 进一步优化移动端位置 */}
+      <Spotlight className="-top-80 -left-40 md:-top-40 md:left-0 md:md:left-60 md:-top-20 w-[300%] h-[300%] md:w-[138%] md:h-[169%] lg:w-[84%]" fill="white" />
       
       {/* Grid background */}
       <div className="absolute inset-0 grid-pattern opacity-20" />

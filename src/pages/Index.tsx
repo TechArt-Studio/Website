@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
@@ -67,7 +68,7 @@ const Index = () => {
             </div>
           </div>
           
-          <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between pt-8 border-t border-white/10">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
               © {currentYear} Tech-Art Studio.
             </div>

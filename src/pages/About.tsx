@@ -1,9 +1,12 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import Navigation from '@/components/Navigation';
+import { siteConfig } from '@/config/siteConfig';
 
 const About = () => {
   const [content, setContent] = useState('');
@@ -87,15 +90,21 @@ We're always excited to hear from our users and the broader community. Whether y
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <p className="text-white">Loading...</p>
+      <div className="min-h-screen bg-black">
+        <Navigation />
+        <div className="flex items-center justify-center min-h-screen">
+          <p className="text-white">Loading...</p>
+        </div>
       </div>
     );
   }
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className="min-h-screen bg-black">
-      <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-8 py-12">
+      <Navigation />
+      <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-8 py-12 pt-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -116,6 +125,46 @@ We're always excited to hear from our users and the broader community. Whether y
           </article>
         </motion.div>
       </div>
+      
+      {/* Footer */}
+      <footer className="py-16 bg-black border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div className="space-y-4">
+              <div className="flex items-center space-x-2">
+                <div className="w-6 h-6 bg-white rounded-lg flex items-center justify-center">
+                  <span className="text-black font-bold text-xs">T</span>
+                </div>
+                <span className="text-white font-semibold">{siteConfig.site.name}</span>
+              </div>
+              <p className="text-gray-400 text-sm">
+                {siteConfig.site.tagline}
+              </p>
+            </div>
+            
+            {siteConfig.footer.sections.map((section, index) => (
+              <div key={index}>
+                <h4 className="text-white font-semibold mb-4">{section.title}</h4>
+                <ul className="space-y-2 text-gray-400 text-sm">
+                  {section.links.map((link, linkIndex) => (
+                    <li key={linkIndex}>
+                      <a href={link.link} className="hover:text-white transition-colors">
+                        {link.text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          
+          <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10">
+            <div className="text-gray-400 text-sm mb-4 md:mb-0">
+              © {currentYear} {siteConfig.footer.copyright}
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

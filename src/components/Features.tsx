@@ -1,43 +1,43 @@
 
 import React from 'react';
-import { Zap, FileText, Globe, Settings } from 'lucide-react';
+import { Palette, Code, Globe, Zap } from 'lucide-react';
 
 const Features = () => {
   const features = [
     {
-      icon: FileText,
-      title: "Markdown First",
-      description: "Write in pure Markdown. No complex setup or learning curve required."
+      icon: Palette,
+      title: "Creative Design",
+      description: "Every project is crafted with artistic vision and attention to detail."
     },
     {
-      icon: Zap,
-      title: "Instant Preview",
-      description: "See your changes immediately. Save a file and your site updates automatically."
+      icon: Code,
+      title: "Clean Development",
+      description: "Markdown files become beautiful, performant web experiences."
     },
     {
       icon: Globe,
-      title: "Auto Routing",
-      description: "File paths become URLs. posts/about.md automatically becomes /about."
+      title: "Digital Presence",
+      description: "From concept to deployment, we build your complete online identity."
     },
     {
-      icon: Settings,
-      title: "Zero Config",
-      description: "Start writing immediately. No build tools or configuration files needed."
+      icon: Zap,
+      title: "Fast Delivery",
+      description: "Rapid prototyping and iteration to bring your ideas to life quickly."
     }
   ];
 
   return (
-    <section className="py-24 bg-gray-50 relative">
+    <section className="py-24 bg-black relative">
       {/* Subtle grid */}
-      <div className="absolute inset-0 grid-pattern opacity-20" />
+      <div className="absolute inset-0 grid-pattern opacity-10" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight">
-            Everything you need
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+            What we do
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light">
-            Powerful features that make content creation effortless
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light">
+            Transforming ideas into digital experiences
           </p>
         </div>
         
@@ -45,18 +45,18 @@ const Features = () => {
           {features.map((feature, index) => (
             <div 
               key={index}
-              className="bg-white rounded-2xl p-8 hover:shadow-lg transition-all duration-300 border border-gray-200/50 group"
+              className="bg-white/5 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 border border-white/10 group backdrop-blur-sm"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="inline-flex p-3 rounded-xl bg-gray-100 mb-6 group-hover:bg-black group-hover:text-white transition-all duration-300">
-                <feature.icon className="w-6 h-6" />
+              <div className="inline-flex p-3 rounded-xl bg-white/10 mb-6 group-hover:bg-white group-hover:text-black transition-all duration-300">
+                <feature.icon className="w-6 h-6 text-white group-hover:text-black" />
               </div>
               
-              <h3 className="text-xl font-semibold text-black mb-4">
+              <h3 className="text-xl font-semibold text-white mb-4">
                 {feature.title}
               </h3>
               
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-400 leading-relaxed">
                 {feature.description}
               </p>
             </div>

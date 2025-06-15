@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowRight, Github } from 'lucide-react';
+import { ArrowRight, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const CTA = () => {
@@ -14,10 +14,10 @@ const CTA = () => {
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="fade-in">
           <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-            Ready to start building?
+            Ready to create together?
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto font-light">
-            Join thousands of creators who've simplified their publishing workflow
+            Let's bring your vision to life with cutting-edge design and development
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
@@ -25,7 +25,7 @@ const CTA = () => {
               size="lg" 
               className="bg-white text-black hover:bg-gray-100 border-0 px-8 py-4 text-lg font-medium transition-all duration-200 rounded-lg shadow-lg hover:shadow-xl group"
             >
-              Get Started Free
+              Start Your Project
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             
@@ -34,24 +34,24 @@ const CTA = () => {
               size="lg"
               className="border-2 border-white/20 text-white hover:bg-white/5 px-8 py-4 text-lg font-medium rounded-lg transition-all duration-200"
             >
-              <Github className="mr-2 w-5 h-5" />
-              View on GitHub
+              <Mail className="mr-2 w-5 h-5" />
+              Get in Touch
             </Button>
           </div>
           
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
             <div className="text-center">
-              <div className="text-3xl font-bold mb-2">10K+</div>
-              <div className="text-gray-400">Active Users</div>
+              <div className="text-3xl font-bold mb-2">50+</div>
+              <div className="text-gray-400">Projects Completed</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold mb-2">100K+</div>
-              <div className="text-gray-400">Pages Created</div>
+              <div className="text-3xl font-bold mb-2">25+</div>
+              <div className="text-gray-400">Happy Clients</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold mb-2">99.9%</div>
-              <div className="text-gray-400">Uptime</div>
+              <div className="text-3xl font-bold mb-2">5+</div>
+              <div className="text-gray-400">Years Experience</div>
             </div>
           </div>
         </div>

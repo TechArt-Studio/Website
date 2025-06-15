@@ -6,27 +6,29 @@ const CodeDemo = () => {
   const [copied, setCopied] = useState(false);
   
   const markdownExample = `---
-title: "Getting Started"
+title: "Brand Identity Project"
+client: "Tech Startup"
 date: "2024-01-15"
 ---
 
-# Welcome to MarkdownStudio
+# Redefining Digital Presence
 
-Transform your ideas into beautiful web pages
-with zero configuration.
+A complete brand overhaul focusing on 
+modern aesthetics and user experience.
 
-## Features
+## Our Approach
 
-- **Instant Publishing** - Save and see changes immediately
-- **Clean URLs** - File paths become website routes  
-- **Responsive Design** - Looks great on every device
+- **Research & Strategy** - Understanding the market
+- **Visual Identity** - Creating memorable designs  
+- **Development** - Building responsive experiences
 
-\`\`\`javascript
-// Your content becomes a website automatically
-const magic = "It just works";
+\`\`\`css
+.brand-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
 \`\`\`
 
-> Ready to get started? Create your first post!`;
+> The result: 300% increase in user engagement`;
 
   const handleCopy = async () => {
     try {
@@ -39,24 +41,24 @@ const magic = "It just works";
   };
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Code editor */}
           <div className="order-2 lg:order-1">
-            <div className="bg-gray-900 rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
-              <div className="flex items-center justify-between px-6 py-4 bg-gray-800 border-b border-gray-700">
+            <div className="bg-gray-900/80 rounded-2xl overflow-hidden shadow-2xl border border-white/10 backdrop-blur-sm">
+              <div className="flex items-center justify-between px-6 py-4 bg-gray-800/80 border-b border-white/10">
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                   <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 </div>
                 <div className="text-gray-400 text-sm font-mono">
-                  posts/getting-started.md
+                  posts/project-showcase.md
                 </div>
                 <button
                   onClick={handleCopy}
-                  className="flex items-center space-x-2 px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-gray-300 hover:text-white"
+                  className="flex items-center space-x-2 px-3 py-1 bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-gray-300 hover:text-white"
                 >
                   {copied ? (
                     <>
@@ -82,53 +84,53 @@ const magic = "It just works";
           {/* Content */}
           <div className="order-1 lg:order-2 space-y-8">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight">
-                Three steps to publish
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+                From concept to creation
               </h2>
-              <p className="text-xl text-gray-600 font-light">
-                From idea to live website in minutes, not hours
+              <p className="text-xl text-gray-400 font-light">
+                Watch your Markdown files transform into stunning portfolio pieces
               </p>
             </div>
             
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-8 h-8 bg-black text-white rounded-full flex items-center justify-center text-sm font-bold">
+                <div className="flex-shrink-0 w-8 h-8 bg-white text-black rounded-full flex items-center justify-center text-sm font-bold">
                   1
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-black mb-2">
-                    Write Markdown
+                  <h3 className="text-lg font-semibold text-white mb-2">
+                    Write Content
                   </h3>
-                  <p className="text-gray-600">
-                    Create a <code className="px-2 py-1 bg-gray-100 rounded text-black font-mono">.md</code> file in your posts directory
+                  <p className="text-gray-400">
+                    Create project descriptions in <code className="px-2 py-1 bg-white/10 rounded text-white font-mono">.md</code> format
                   </p>
                 </div>
               </div>
               
               <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-8 h-8 bg-black text-white rounded-full flex items-center justify-center text-sm font-bold">
+                <div className="flex-shrink-0 w-8 h-8 bg-white text-black rounded-full flex items-center justify-center text-sm font-bold">
                   2
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-black mb-2">
-                    Save File
+                  <h3 className="text-lg font-semibold text-white mb-2">
+                    Auto-Generate
                   </h3>
-                  <p className="text-gray-600">
-                    Our system automatically detects changes and generates routes
+                  <p className="text-gray-400">
+                    Our system converts your content into beautiful web pages
                   </p>
                 </div>
               </div>
               
               <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-8 h-8 bg-black text-white rounded-full flex items-center justify-center text-sm font-bold">
+                <div className="flex-shrink-0 w-8 h-8 bg-white text-black rounded-full flex items-center justify-center text-sm font-bold">
                   3
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-black mb-2">
-                    Visit URL
+                  <h3 className="text-lg font-semibold text-white mb-2">
+                    Share & Showcase
                   </h3>
-                  <p className="text-gray-600">
-                    Your content is instantly available at the corresponding URL
+                  <p className="text-gray-400">
+                    Present your work with professional, responsive layouts
                   </p>
                 </div>
               </div>
@@ -137,9 +139,9 @@ const magic = "It just works";
             <div className="pt-6">
               <a 
                 href="#" 
-                className="inline-flex items-center text-black hover:text-gray-600 transition-colors font-medium"
+                className="inline-flex items-center text-white hover:text-gray-300 transition-colors font-medium"
               >
-                See full documentation
+                View our portfolio
                 <ArrowRight className="ml-2 w-4 h-4" />
               </a>
             </div>

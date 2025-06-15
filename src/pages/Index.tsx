@@ -4,10 +4,13 @@ import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Features from '@/components/Features';
 import About from '@/components/About';
+import Reviews from '@/components/Reviews';
 import FAQ from '@/components/FAQ';
 import Team from '@/components/Team';
 import Blog from '@/components/Blog';
+import PoweredBy from '@/components/PoweredBy';
 import Contact from '@/components/Contact';
+import CTA from '@/components/CTA';
 
 const Index = () => {
   const currentYear = new Date().getFullYear();
@@ -18,10 +21,13 @@ const Index = () => {
       <Hero />
       <Features />
       <About />
+      <Reviews />
       <FAQ />
       <Team />
       <Blog />
+      <PoweredBy />
       <Contact />
+      <CTA />
       
       {/* Footer */}
       <footer className="py-16 bg-black border-t border-white/10">

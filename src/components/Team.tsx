@@ -8,11 +8,11 @@ import { motion } from 'framer-motion';
 const Team = () => {
   const team = [
     {
-      name: "Muhammad Fahad",
+      name: "Happyleibniz",
       role: "Founder & Developer",
-      initials: "MF",
-      avatar: "https://cdn.xyehr.cn/images/121920485.png",
-      username: "engr.fahad_"
+      initials: "HL",
+      avatar: "/placeholder.svg",
+      username: "Happyleibniz"
     },
     {
       name: "Evan Huang",

@@ -3,6 +3,7 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { Zap, Heart, Gift } from 'lucide-react';
+import { GlowingEffect } from '@/components/ui/glowing-effect';
 
 const About = () => {
   const features = [
@@ -93,9 +94,17 @@ const About = () => {
                     duration: 0.6,
                     ease: [0.25, 0.46, 0.45, 0.94]
                   }}
+                  className="relative h-full rounded-2xl border border-white/10 p-2"
                 >
-                  <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 group backdrop-blur-sm h-full">
-                    <CardHeader className="pb-3">
+                  <GlowingEffect
+                    spread={40}
+                    glow={true}
+                    disabled={false}
+                    proximity={64}
+                    inactiveZone={0.01}
+                  />
+                  <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl bg-black/40 backdrop-blur-sm p-6 border border-white/5 hover:bg-white/10 transition-all duration-300 group">
+                    <div className="relative flex flex-1 flex-col justify-between gap-4">
                       <motion.div 
                         className="inline-flex p-2 rounded-lg bg-white/10 mb-3 group-hover:bg-white group-hover:text-black transition-all duration-300 w-fit"
                         whileHover={{ rotate: 360 }}
@@ -103,16 +112,16 @@ const About = () => {
                       >
                         <feature.icon className="w-5 h-5 text-white group-hover:text-black" />
                       </motion.div>
-                      <CardTitle className="text-lg font-semibold text-white">
-                        {feature.title}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <CardDescription className="text-gray-400 leading-relaxed">
-                        {feature.description}
-                      </CardDescription>
-                    </CardContent>
-                  </Card>
+                      <div className="space-y-3">
+                        <h3 className="text-lg font-semibold text-white">
+                          {feature.title}
+                        </h3>
+                        <p className="text-sm text-gray-300 leading-relaxed">
+                          {feature.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>

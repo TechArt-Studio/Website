@@ -36,12 +36,27 @@ const Navigation = () => {
 
   const handleSmoothScroll = (href: string) => {
     if (href.startsWith('#')) {
-      const element = document.querySelector(href);
+      const targetId = href.substring(1);
+      const element = document.getElementById(targetId);
       if (element) {
         element.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
         });
+      } else {
+        // 如果找不到确切的 id，尝试查找包含该 id 的 section
+        const sections = document.querySelectorAll('section');
+        const targetSection = Array.from(sections).find(section => 
+          section.id === targetId || 
+          section.querySelector(`#${targetId}`) ||
+          section.getAttribute('data-section') === targetId
+        );
+        if (targetSection) {
+          targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+        }
       }
     }
     setIsOpen(false);
@@ -151,7 +166,10 @@ const Navigation = () => {
                     <Button
                       variant="ghost"
                       className="text-gray-300 hover:text-white hover:bg-white/10 justify-start px-4 py-3 text-base w-full rounded-lg transition-all duration-200"
-                      onClick={() => handleSmoothScroll(item.href)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleSmoothScroll(item.href);
+                      }}
                     >
                       {item.name}
                     </Button>

@@ -82,7 +82,7 @@ const About = () => {
                       duration: 0.6,
                       ease: [0.25, 0.46, 0.45, 0.94]
                     }}
-                    className="relative h-full rounded-2xl border border-white/10 p-6 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group"
+                    className="relative group"
                   >
                     <GlowingEffect
                       blur={3}
@@ -91,22 +91,24 @@ const About = () => {
                       disabled={false}
                       className="rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     />
-                    <div className="relative flex h-full flex-col justify-between gap-6">
-                      <div className="relative flex flex-1 flex-col justify-between gap-4">
-                        <motion.div 
-                          className="inline-flex p-2 rounded-lg bg-white/10 mb-3 group-hover:bg-white group-hover:text-black transition-all duration-300 w-fit"
-                          whileHover={{ rotate: 360 }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <IconComponent className="w-5 h-5 text-white group-hover:text-black" />
-                        </motion.div>
-                        <div className="space-y-3">
-                          <h3 className="text-lg font-semibold text-white">
-                            {feature.title}
-                          </h3>
-                          <p className="text-sm text-gray-300 leading-relaxed">
-                            {feature.description}
-                          </p>
+                    <div className="relative h-full rounded-2xl border border-white/10 p-6 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
+                      <div className="relative flex h-full flex-col justify-between gap-6">
+                        <div className="relative flex flex-1 flex-col justify-between gap-4">
+                          <motion.div 
+                            className="inline-flex p-2 rounded-lg bg-white/10 mb-3 group-hover:bg-white group-hover:text-black transition-all duration-300 w-fit"
+                            whileHover={{ rotate: 360 }}
+                            transition={{ duration: 0.5 }}
+                          >
+                            <IconComponent className="w-5 h-5 text-white group-hover:text-black" />
+                          </motion.div>
+                          <div className="space-y-3">
+                            <h3 className="text-lg font-semibold text-white">
+                              {feature.title}
+                            </h3>
+                            <p className="text-sm text-gray-300 leading-relaxed">
+                              {feature.description}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>

@@ -191,6 +191,39 @@ TOTP remains one of the most reliable forms of two-factor authentication availab
     loadPost();
   }, [slug]);
 
+  // 动态更新页面标题和描述
+  useEffect(() => {
+    if (post) {
+      document.title = `${post.title} - Tech-Art`;
+      
+      // 更新meta描述
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', post.description);
+      }
+      
+      // 更新og标签
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) {
+        ogTitle.setAttribute('content', `${post.title} - Tech-Art`);
+      }
+      
+      const ogDescription = document.querySelector('meta[property="og:description"]');
+      if (ogDescription) {
+        ogDescription.setAttribute('content', post.description);
+      }
+    }
+    
+    // 清理函数：页面卸载时恢复默认标题
+    return () => {
+      document.title = 'Tech-Art';
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', 'Tech-Art - Open a new world with code');
+      }
+    };
+  }, [post]);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-black">
@@ -280,9 +313,11 @@ TOTP remains one of the most reliable forms of two-factor authentication availab
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 bg-white rounded-lg flex items-center justify-center">
-                  <span className="text-black font-bold text-xs">T</span>
-                </div>
+                <img 
+                  src={siteConfig.site.logo} 
+                  alt="Tech-Art Logo" 
+                  className="w-6 h-6"
+                />
                 <span className="text-white font-semibold">{siteConfig.site.name}</span>
               </div>
               <p className="text-gray-400 text-sm">

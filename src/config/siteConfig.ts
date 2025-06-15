@@ -52,7 +52,7 @@ export const siteConfig = {
   // About Section
   about: {
     title: "What is Tech-Art?",
-    description: "Tech-Art is a studio main mission to help you build amazing applications.",
+    description: "Tech-Art is a studio whose main mission is to help you build amazing applications.",
     features: [
       {
         icon: "Zap",
@@ -165,10 +165,8 @@ export const siteConfig = {
       {
         title: "Products",
         links: [
-          { text: "One Captcha", link: "/post/one-captcha" },
           { text: "One Calendar", link: "https://onecalendar.us.kg" },
-          { text: "One Pass", link: "https://pass.xyehr.cn" },
-          { text: "Easy Note", link: "https://easynote.us.kg" }
+          { text: "Mail", link: "https://github.com/EvanTechDev/Mail" }
         ]
       },
       {

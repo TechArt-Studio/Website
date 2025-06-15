@@ -3,11 +3,23 @@ import React from 'react';
 import { Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { CanvasRevealEffect } from '@/components/ui/canvas-reveal-effect';
 
 const Contact = () => {
   return (
     <section id="contact" className="py-24 bg-black relative">
-      <div className="absolute inset-0 grid-pattern opacity-10" />
+      <div className="absolute inset-0 h-full w-full">
+        <CanvasRevealEffect
+          animationSpeed={0.4}
+          containerClassName="bg-black"
+          colors={[
+            [16, 185, 129],
+            [101, 163, 13],
+          ]}
+          dotSize={2}
+          showGradient={false}
+        />
+      </div>
       
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">

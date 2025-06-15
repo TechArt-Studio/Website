@@ -3,6 +3,7 @@ import React from 'react';
 import { Zap, Cloud, Shield, Globe, Database, Smartphone } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { siteConfig } from '@/config/siteConfig';
+import { GlowingEffect } from '@/components/ui/glowing-effect';
 
 const PoweredBy = () => {
   const iconMap = {
@@ -65,11 +66,20 @@ const PoweredBy = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="flex flex-col items-center p-4 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group"
+                className="relative group"
               >
-                <IconComponent className="w-8 h-8 text-white mb-3 group-hover:scale-110 transition-transform" />
-                <h4 className="text-white font-semibold text-sm mb-1">{service.name}</h4>
-                <p className="text-gray-400 text-xs text-center">{service.description}</p>
+                <GlowingEffect
+                  blur={3}
+                  spread={20}
+                  proximity={50}
+                  disabled={false}
+                  className="rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                />
+                <div className="flex flex-col items-center p-4 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group relative">
+                  <IconComponent className="w-8 h-8 text-white mb-3 group-hover:scale-110 transition-transform" />
+                  <h4 className="text-white font-semibold text-sm mb-1">{service.name}</h4>
+                  <p className="text-gray-400 text-xs text-center">{service.description}</p>
+                </div>
               </motion.div>
             );
           })}

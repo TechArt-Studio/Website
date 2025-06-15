@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { useBlogPosts } from '@/hooks/useBlogPosts';
 import { useNavigate, Link } from 'react-router-dom';
 import { siteConfig } from '@/config/siteConfig';
+import { GlowingEffect } from '@/components/ui/glowing-effect';
 
 const Blog = () => {
   const { blogPosts, loading } = useBlogPosts();
@@ -69,9 +70,17 @@ const Blog = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="relative"
             >
+              <GlowingEffect
+                blur={5}
+                spread={30}
+                proximity={100}
+                disabled={false}
+                className="rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              />
               <Card 
-                className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm h-full group cursor-pointer"
+                className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm h-full group cursor-pointer relative"
                 onClick={() => handlePostClick(post.slug)}
               >
                 <CardHeader>

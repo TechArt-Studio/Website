@@ -2,6 +2,7 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { CanvasRevealEffect } from '@/components/ui/canvas-reveal-effect';
 
 const Team = () => {
   const team = [
@@ -21,7 +22,18 @@ const Team = () => {
 
   return (
     <section id="team" className="py-24 bg-black relative">
-      <div className="absolute inset-0 grid-pattern opacity-10" />
+      <div className="absolute inset-0 h-full w-full">
+        <CanvasRevealEffect
+          animationSpeed={0.3}
+          containerClassName="bg-black"
+          colors={[
+            [59, 130, 246],
+            [139, 92, 246],
+          ]}
+          dotSize={2}
+          showGradient={false}
+        />
+      </div>
       
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">

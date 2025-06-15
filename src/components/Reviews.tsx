@@ -4,32 +4,17 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
+import { GlowingEffect } from '@/components/ui/glowing-effect';
 import { siteConfig } from '@/config/siteConfig';
 
 const Reviews = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0
-    }
-  };
+  const reviews = siteConfig.reviews.items;
 
   return (
-    <section className="py-24 bg-black relative">
-      <div className="absolute inset-0 square-pattern opacity-5" />
+    <section id="reviews" className="py-24 bg-black relative">
+      <div className="absolute inset-0 grid-pattern opacity-10" />
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -45,51 +30,55 @@ const Reviews = () => {
           </p>
         </motion.div>
         
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {siteConfig.reviews.items.map((review, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {reviews.map((review, index) => (
             <motion.div
               key={index}
-              variants={itemVariants}
-              transition={{
-                duration: 0.6,
-                ease: [0.25, 0.46, 0.45, 0.94]
-              }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="relative"
             >
-              <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm h-full">
+              <GlowingEffect
+                blur={5}
+                spread={30}
+                proximity={100}
+                disabled={false}
+                className="rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              />
+              <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm h-full group relative">
                 <CardContent className="p-6">
-                  <div className="flex items-center space-x-3 mb-4">
-                    <Avatar>
+                  <div className="flex items-center mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star 
+                        key={i} 
+                        className={`w-4 h-4 ${i < review.rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-600'}`} 
+                      />
+                    ))}
+                  </div>
+                  
+                  <p className="text-gray-300 mb-6 leading-relaxed">
+                    "{review.content}"
+                  </p>
+                  
+                  <div className="flex items-center">
+                    <Avatar className="w-10 h-10 mr-3 bg-white/20">
                       <AvatarImage src={review.avatar} alt={review.name} />
-                      <AvatarFallback className="bg-white/10 text-white">
+                      <AvatarFallback className="text-white text-sm font-semibold bg-transparent">
                         {review.name.split(' ').map(n => n[0]).join('')}
                       </AvatarFallback>
                     </Avatar>
                     <div>
-                      <div className="text-white font-semibold">{review.name}</div>
-                      <div className="text-gray-400 text-sm">{review.username}</div>
+                      <h4 className="text-white font-medium">{review.name}</h4>
+                      <p className="text-gray-400 text-sm">{review.role}</p>
                     </div>
                   </div>
-                  
-                  <div className="flex space-x-1 mb-4">
-                    {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  
-                  <p className="text-gray-300 leading-relaxed">
-                    "{review.comment}"
-                  </p>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

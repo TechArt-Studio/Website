@@ -3,7 +3,7 @@ export const siteConfig = {
   site: {
     name: "Tech Art",
     tagline: "Open a new world with code",
-    description: "We help you build fast, easy, and free solutions.",
+    description: "",
     logo: "https://docs.xyehr.cn/images/logo-dark.svg"
   },
 

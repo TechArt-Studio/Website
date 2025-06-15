@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Mail } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -94,15 +94,6 @@ const Navigation = () => {
                 ))}
               </NavigationMenuList>
             </NavigationMenu>
-            
-            <motion.div
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white hover:bg-white/5">
-                <Mail className="w-4 h-4" />
-              </Button>
-            </motion.div>
           </div>
 
           {/* About Button - Desktop */}
@@ -166,24 +157,6 @@ const Navigation = () => {
                     </Button>
                   </motion.div>
                 ))}
-                
-                <div className="w-full h-px bg-white/10 my-2" />
-                
-                <motion.div
-                  className="px-2"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.4, duration: 0.3 }}
-                >
-                  <Button
-                    variant="ghost"
-                    className="text-gray-300 hover:text-white hover:bg-white/10 justify-start px-4 py-3 text-base w-full rounded-lg transition-all duration-200"
-                    onClick={() => handleSmoothScroll('#contact')}
-                  >
-                    <Mail className="w-4 h-4 mr-2" />
-                    Contact
-                  </Button>
-                </motion.div>
               </div>
             </motion.div>
           )}

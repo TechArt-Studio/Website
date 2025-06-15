@@ -41,7 +41,7 @@ const BlogList = () => {
     <div className="min-h-screen bg-black">
       <div className="absolute inset-0 grid-pattern opacity-10" />
       
-      <div className="relative max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 py-12">
+      <div className="relative max-w-7xl mx-auto px-8 sm:px-6 lg:px-8 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -124,7 +124,7 @@ const BlogList = () => {
       
       {/* Footer */}
       <footer className="py-16 bg-black border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-8 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div className="space-y-4">
               <div className="flex items-center space-x-2">

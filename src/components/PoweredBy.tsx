@@ -5,12 +5,12 @@ import { motion } from 'framer-motion';
 
 const PoweredBy = () => {
   const services = [
-    { icon: Zap, name: 'Vercel', description: '快速部署' },
-    { icon: Cloud, name: 'Cloudflare', description: 'CDN 加速' },
-    { icon: Shield, name: 'Security', description: '安全防护' },
-    { icon: Globe, name: 'Global', description: '全球网络' },
-    { icon: Database, name: 'Database', description: '数据存储' },
-    { icon: Smartphone, name: 'Mobile', description: '移动优化' }
+    { icon: Zap, name: 'Vercel', description: 'Fast deployment' },
+    { icon: Cloud, name: 'Cloudflare', description: 'CDN acceleration' },
+    { icon: Shield, name: 'Security', description: 'Security protection' },
+    { icon: Globe, name: 'Global', description: 'Global network' },
+    { icon: Database, name: 'Database', description: 'Data storage' },
+    { icon: Smartphone, name: 'Mobile', description: 'Mobile optimization' }
   ];
 
   const containerVariants = {
@@ -47,7 +47,7 @@ const PoweredBy = () => {
             Powered by
           </h3>
           <p className="text-gray-400">
-            使用业界领先的技术和服务
+            Using industry-leading technologies and services
           </p>
         </motion.div>
         

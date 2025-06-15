@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { useBlogPosts } from '@/hooks/useBlogPosts';
 import { useNavigate, Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
 
 const Blog = () => {
   const { posts, loading } = useBlogPosts();
@@ -16,7 +15,7 @@ const Blog = () => {
     navigate(`/${slug}`);
   };
 
-  // 只显示最近三篇文章
+  // Only show the latest three articles
   const recentPosts = posts.slice(0, 3);
 
   if (loading) {
@@ -101,7 +100,7 @@ const Blog = () => {
           ))}
         </motion.div>
         
-        {/* 查看更多按钮 */}
+        {/* View more button */}
         <motion.div 
           className="text-center mt-12"
           initial={{ opacity: 0, y: 20 }}
@@ -116,7 +115,6 @@ const Blog = () => {
               className="text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200 group"
             >
               View All Posts
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
         </motion.div>

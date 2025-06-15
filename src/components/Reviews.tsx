@@ -1,39 +1,53 @@
 
 import React from 'react';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card, CardContent } from '@/components/ui/card';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
 
 const Reviews = () => {
   const reviews = [
     {
-      avatar: '/placeholder.svg',
-      name: '张明',
-      username: '@zhangming',
-      comment: 'Tech-Art 的产品真的很优秀，界面简洁，功能强大，而且完全免费！',
-      rating: 5
+      name: "Sarah Johnson",
+      username: "@sarahj_dev",
+      avatar: "/placeholder.svg",
+      rating: 5,
+      comment: "Tech-Art's privacy-focused tools have been a game-changer for our team. Fast, reliable, and completely free!"
     },
     {
-      avatar: '/placeholder.svg',
-      name: '李小雨',
-      username: '@lixiaoyu',
-      comment: '作为开发者，我非常欣赏他们的开源理念和对隐私保护的重视。',
-      rating: 5
+      name: "Michael Chen",
+      username: "@mikechen_tech", 
+      avatar: "/placeholder.svg",
+      rating: 5,
+      comment: "One Calendar is exactly what I needed. Clean interface, no ads, and works perfectly across all devices."
     },
     {
-      avatar: '/placeholder.svg',
-      name: '王建华',
-      username: '@wangjianhua',
-      comment: '部署速度真的很快，全球多地区的支持让我的用户体验大大提升。',
-      rating: 5
+      name: "Emily Rodriguez",
+      username: "@emily_codes",
+      avatar: "/placeholder.svg", 
+      rating: 5,
+      comment: "Love the open-source approach. The deployment process is incredibly smooth with their Vercel integration."
     },
     {
-      avatar: '/placeholder.svg',
-      name: '陈思思',
-      username: '@chensisi',
-      comment: '没有广告的体验太棒了，这才是真正为用户着想的产品。',
-      rating: 5
+      name: "David Kim",
+      username: "@davidk_design",
+      avatar: "/placeholder.svg",
+      rating: 5,
+      comment: "Finally, a privacy-first solution that doesn't compromise on performance. Highly recommend Tech-Art!"
+    },
+    {
+      name: "Lisa Thompson",
+      username: "@lisa_startup",
+      avatar: "/placeholder.svg",
+      rating: 5,
+      comment: "The UI/UX design is outstanding. Everything is intuitive and the loading speeds are impressive."
+    },
+    {
+      name: "Alex Park",
+      username: "@alexpark_dev",
+      avatar: "/placeholder.svg",
+      rating: 5,
+      comment: "As a developer, I appreciate the clean code and excellent documentation. Great work by the Tech-Art team!"
     }
   ];
 
@@ -42,13 +56,13 @@ const Reviews = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.1
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0
@@ -57,9 +71,9 @@ const Reviews = () => {
 
   return (
     <section className="py-24 bg-black relative">
-      <div className="absolute inset-0 square-pattern opacity-10" />
+      <div className="absolute inset-0 square-pattern opacity-5" />
       
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -68,15 +82,15 @@ const Reviews = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            用户评价
+            What Our Users Say
           </h2>
           <p className="text-xl text-gray-400">
-            看看用户对我们的评价
+            Trusted by developers and teams worldwide
           </p>
         </motion.div>
         
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -91,29 +105,27 @@ const Reviews = () => {
                 ease: [0.25, 0.46, 0.45, 0.94]
               }}
             >
-              <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 h-full">
+              <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm h-full">
                 <CardContent className="p-6">
-                  <div className="flex items-start space-x-4 mb-4">
-                    <Avatar className="w-12 h-12">
+                  <div className="flex items-center space-x-3 mb-4">
+                    <Avatar>
                       <AvatarImage src={review.avatar} alt={review.name} />
                       <AvatarFallback className="bg-white/10 text-white">
-                        {review.name.charAt(0)}
+                        {review.name.split(' ').map(n => n[0]).join('')}
                       </AvatarFallback>
                     </Avatar>
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between mb-2">
-                        <div>
-                          <h4 className="text-white font-semibold">{review.name}</h4>
-                          <p className="text-gray-400 text-sm">{review.username}</p>
-                        </div>
-                        <div className="flex space-x-1">
-                          {[...Array(review.rating)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                          ))}
-                        </div>
-                      </div>
+                    <div>
+                      <div className="text-white font-semibold">{review.name}</div>
+                      <div className="text-gray-400 text-sm">{review.username}</div>
                     </div>
                   </div>
+                  
+                  <div className="flex space-x-1 mb-4">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  
                   <p className="text-gray-300 leading-relaxed">
                     "{review.comment}"
                   </p>

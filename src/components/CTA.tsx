@@ -1,12 +1,11 @@
 
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 
 const CTA = () => {
   const handleJoinClick = () => {
-    // 暂时跳转到联系页面，后续可以更换为实际链接
+    // Temporarily redirect to contact page, can be replaced with actual link later
     const contactSection = document.getElementById('contact');
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
@@ -30,10 +29,10 @@ const CTA = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-            现在加入 Tech-Art
+            Join Tech-Art Now
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto font-light">
-            与我们一起开启代码新世界，体验快速、简单、免费的隐私保护解决方案
+            Join us to open a new world of code and experience fast, simple, and free privacy protection solutions
           </p>
           
           <motion.div 
@@ -48,8 +47,7 @@ const CTA = () => {
               onClick={handleJoinClick}
               className="bg-white text-black hover:bg-gray-100 border-0 px-8 py-4 text-lg font-medium transition-all duration-200 rounded-lg shadow-lg hover:shadow-xl group"
             >
-              立即加入
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              Join Now
             </Button>
           </motion.div>
         </motion.div>

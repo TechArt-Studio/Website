@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowRight, Calendar } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
@@ -9,19 +9,19 @@ import { Spotlight } from '@/components/ui/spotlight';
 const Hero = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* Spotlight 背景效果 */}
+      {/* Spotlight background effect */}
       <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
       
       {/* Grid background */}
       <div className="absolute inset-0 grid-pattern opacity-20" />
       
-      {/* 移动端优化的打光效果 - 更柔和的渐变 */}
+      {/* Mobile optimized lighting effect - softer gradient */}
       <div className="absolute top-1/4 left-1/2 w-[400px] h-[300px] bg-gradient-radial from-white/15 via-white/8 to-transparent rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2 md:hidden" />
       
-      {/* 移动端额外的侧面打光 */}
+      {/* Mobile additional side lighting */}
       <div className="absolute top-1/3 right-0 w-[200px] h-[200px] bg-gradient-radial from-white/10 via-white/5 to-transparent rounded-full blur-2xl md:hidden" />
       
-      {/* 桌面端的精准打光 */}
+      {/* Desktop precise lighting */}
       <div className="absolute top-0 left-0 w-full h-full opacity-30 hidden md:block">
         <div className="absolute -top-32 -left-32 w-[1000px] h-[1000px]">
           <div className="w-full h-full bg-gradient-conic from-white/40 via-white/15 to-transparent rounded-full blur-3xl transform rotate-45" />
@@ -30,7 +30,7 @@ const Hero = () => {
       
       <div className="absolute top-1/3 left-1/3 w-[600px] h-[400px] bg-gradient-radial from-white/30 via-white/10 to-transparent rounded-full blur-3xl transform -translate-x-48 -translate-y-24 -rotate-12 hidden md:block" />
       
-      {/* 移动端优化的渐变遮罩 - 减少暗度 */}
+      {/* Mobile optimized gradient mask - reduce darkness */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 md:from-black/20 md:via-transparent md:to-black/40" />
       
       {/* Main content */}
@@ -95,7 +95,6 @@ const Hero = () => {
               className="bg-white text-black hover:bg-gray-100 border-0 px-8 py-3 text-lg font-medium group transition-all duration-200 rounded-md shadow-xl"
             >
               Learn More
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </motion.div>
         </motion.div>

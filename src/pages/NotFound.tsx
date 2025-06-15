@@ -71,7 +71,7 @@ const NotFound = () => {
                     </li>
                   ))}
                 </ul>
-                </motion.div>
+              </motion.div>
             ))}
           </div>
           

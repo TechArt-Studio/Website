@@ -3,7 +3,7 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { Zap, Heart, Gift } from 'lucide-react';
-import { GlowingEffect } from '@/components/ui/glowing-effect';
+import { CanvasRevealEffect } from '@/components/ui/canvas-reveal-effect';
 import { siteConfig } from '@/config/siteConfig';
 
 const About = () => {
@@ -82,16 +82,17 @@ const About = () => {
                       duration: 0.6,
                       ease: [0.25, 0.46, 0.45, 0.94]
                     }}
-                    className="relative h-full rounded-2xl border border-white/10 p-2"
+                    className="relative h-full rounded-2xl border border-white/10 p-2 group"
                   >
-                    <GlowingEffect
-                      spread={40}
-                      glow={true}
-                      disabled={false}
-                      proximity={64}
-                      inactiveZone={0.01}
-                    />
-                    <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl bg-black/40 backdrop-blur-sm p-6 border border-white/5 hover:bg-white/10 transition-all duration-300 group">
+                    <div className="absolute inset-0 h-full rounded-2xl overflow-hidden">
+                      <CanvasRevealEffect
+                        animationSpeed={3}
+                        containerClassName="bg-black"
+                        colors={[[59, 130, 246], [139, 92, 246]]}
+                        dotSize={2}
+                      />
+                    </div>
+                    <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl bg-black/80 backdrop-blur-sm p-6 border border-white/5 hover:bg-black/60 transition-all duration-300">
                       <div className="relative flex flex-1 flex-col justify-between gap-4">
                         <motion.div 
                           className="inline-flex p-2 rounded-lg bg-white/10 mb-3 group-hover:bg-white group-hover:text-black transition-all duration-300 w-fit"
@@ -130,16 +131,34 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              <div className="aspect-square bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl opacity-60" />
-              <div className="aspect-square bg-gradient-to-br from-gray-700 to-gray-800 rounded-2xl opacity-40" />
+              <div className="aspect-square bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden">
+                <img 
+                  src="https://cdn.xyehr.cn/images/about-image1.jpg" 
+                  alt="Tech-Art Studio" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="aspect-square bg-gradient-to-br from-gray-700 to-gray-800 rounded-2xl overflow-hidden">
+                <img 
+                  src="https://cdn.xyehr.cn/images/about-image2.jpg" 
+                  alt="Tech-Art Development" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </motion.div>
             <motion.div 
-              className="aspect-video bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl opacity-50"
+              className="aspect-video bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 0.5, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.8 }}
-            />
+            >
+              <img 
+                src="https://cdn.xyehr.cn/images/banner.jpg" 
+                alt="Tech-Art Banner" 
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
           </motion.div>
         </div>
       </div>

@@ -94,7 +94,6 @@ const About = () => {
             <motion.div 
               className="aspect-video bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl opacity-50"
               whileHover={{ scale: 1.02, opacity: 0.7 }}
-              transition={{ duration: 0.3 }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 0.5, y: 0 }}
               viewport={{ once: true }}

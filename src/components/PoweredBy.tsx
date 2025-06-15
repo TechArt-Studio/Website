@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Zap, Cloud, Shield, Globe, Database, Smartphone } from 'lucide-react';
+import { Zap, Cloud, Shield, Globe, Database, Smartphone, Github } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { siteConfig } from '@/config/siteConfig';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
@@ -12,7 +11,8 @@ const PoweredBy = () => {
     Shield,
     Globe,
     Database,
-    Smartphone
+    Smartphone,
+    Github
   };
 
   const containerVariants = {
@@ -54,7 +54,7 @@ const PoweredBy = () => {
         </motion.div>
         
         <motion.div 
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6"
+          className="grid grid-cols-2 md:grid-cols-4 gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

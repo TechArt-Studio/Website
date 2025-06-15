@@ -143,10 +143,8 @@ export const siteConfig = {
     services: [
       { icon: "Zap", name: "Vercel", description: "Fast deployment" },
       { icon: "Cloud", name: "Cloudflare", description: "CDN acceleration" },
-      { icon: "Shield", name: "Security", description: "Security protection" },
-      { icon: "Globe", name: "Global", description: "Global network" },
-      { icon: "Database", name: "Database", description: "Data storage" },
-      { icon: "Smartphone", name: "Mobile", description: "Mobile optimization" }
+      { icon: "Github", name: "GitHub", description: "Version control" },
+      { icon: "Shield", name: "Clerk", description: "Authentication" }
     ]
   },
 

@@ -41,10 +41,8 @@ const Navigation = () => {
       const targetId = href.substring(1);
       console.log('Target ID:', targetId);
       
-      // 首先关闭移动端菜单
       setIsOpen(false);
       
-      // 延迟执行滚动，确保菜单关闭动画完成
       setTimeout(() => {
         const element = document.getElementById(targetId);
         console.log('Found element:', element);
@@ -55,7 +53,6 @@ const Navigation = () => {
             block: 'start',
           });
         } else {
-          // 如果找不到确切的 id，尝试查找包含该 id 的 section
           const sections = document.querySelectorAll('section');
           console.log('All sections:', sections);
           
@@ -80,7 +77,7 @@ const Navigation = () => {
             console.warn(`No section found for ${targetId}`);
           }
         }
-      }, 300); // 等待菜单关闭动画
+      }, 300);
     }
   };
 
@@ -94,8 +91,41 @@ const Navigation = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo - clickable and links to homepage */}
+        {/* Mobile Layout - 完全重新设计 */}
+        <div className="md:hidden flex items-center justify-between h-16">
+          {/* Mobile Menu Button - 移到最左边 */}
+          <motion.div whileTap={{ scale: 0.9 }}>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-white hover:text-gray-300 hover:bg-white/10 p-2 mr-3"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </Button>
+          </motion.div>
+
+          {/* Logo - 居中 */}
+          <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity absolute left-1/2 transform -translate-x-1/2">
+            <img 
+              src={siteConfig.site.logo} 
+              alt="Tech-Art Logo" 
+              className="w-7 h-7"
+            />
+            <span className="text-white font-bold text-lg">Tech-Art</span>
+          </Link>
+
+          {/* About Button - 右边 */}
+          <Link to="/about">
+            <Button variant="outline" size="sm" className="text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200 text-xs px-3 py-1.5">
+              About
+            </Button>
+          </Link>
+        </div>
+
+        {/* Desktop Layout - 保持原样 */}
+        <div className="hidden md:flex items-center justify-between h-16">
+          {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
             <img 
               src={siteConfig.site.logo} 
@@ -106,7 +136,7 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="flex items-center space-x-8">
             <NavigationMenu>
               <NavigationMenuList className="space-x-6">
                 {navItems.map((item, index) => (
@@ -135,7 +165,6 @@ const Navigation = () => {
 
           {/* Desktop About Button */}
           <motion.div
-            className="hidden md:block"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -145,42 +174,28 @@ const Navigation = () => {
               </Button>
             </Link>
           </motion.div>
-
-          {/* Mobile Menu Button - 重新设计的移动端菜单按钮 */}
-          <div className="md:hidden">
-            <motion.div whileTap={{ scale: 0.9 }}>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsOpen(!isOpen)}
-                className="text-white hover:text-gray-300 hover:bg-white/10 p-2"
-              >
-                {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </Button>
-            </motion.div>
-          </div>
         </div>
 
-        {/* Mobile Navigation - 全新设计的移动端菜单 */}
+        {/* Mobile Menu - 全屏覆盖式设计 */}
         <AnimatePresence>
           {isOpen && (
             <motion.div 
-              className="md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden fixed inset-0 top-16 bg-black/95 backdrop-blur-xl z-40"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="px-4 py-6 space-y-1">
+              <div className="px-6 py-8 space-y-2">
                 {navItems.map((item, index) => (
                   <motion.div
                     key={item.name}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 * index, duration: 0.3 }}
                   >
                     <button
-                      className="w-full text-left text-gray-300 hover:text-white hover:bg-white/10 px-4 py-3 text-base rounded-lg transition-all duration-200"
+                      className="w-full text-left text-gray-300 hover:text-white hover:bg-white/10 px-4 py-4 text-lg rounded-lg transition-all duration-200 font-medium"
                       onClick={() => handleSmoothScroll(item.href)}
                     >
                       {item.name}
@@ -188,17 +203,16 @@ const Navigation = () => {
                   </motion.div>
                 ))}
                 
-                {/* Mobile About Button */}
                 <motion.div
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.6, duration: 0.3 }}
-                  className="pt-4 border-t border-white/10"
+                  className="pt-6 border-t border-white/10"
                 >
                   <Link to="/about" onClick={() => setIsOpen(false)}>
                     <Button 
                       variant="outline" 
-                      className="w-full text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200"
+                      className="w-full text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200 py-4 text-lg font-medium"
                     >
                       About
                     </Button>

@@ -35,31 +35,53 @@ const Navigation = () => {
   ];
 
   const handleSmoothScroll = (href: string) => {
+    console.log('Attempting to scroll to:', href);
+    
     if (href.startsWith('#')) {
       const targetId = href.substring(1);
-      const element = document.getElementById(targetId);
-      if (element) {
-        element.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-      } else {
-        // 如果找不到确切的 id，尝试查找包含该 id 的 section
-        const sections = document.querySelectorAll('section');
-        const targetSection = Array.from(sections).find(section => 
-          section.id === targetId || 
-          section.querySelector(`#${targetId}`) ||
-          section.getAttribute('data-section') === targetId
-        );
-        if (targetSection) {
-          targetSection.scrollIntoView({
+      console.log('Target ID:', targetId);
+      
+      // 首先关闭移动端菜单
+      setIsOpen(false);
+      
+      // 延迟执行滚动，确保菜单关闭动画完成
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        console.log('Found element:', element);
+        
+        if (element) {
+          element.scrollIntoView({
             behavior: 'smooth',
             block: 'start',
           });
+        } else {
+          // 如果找不到确切的 id，尝试查找包含该 id 的 section
+          const sections = document.querySelectorAll('section');
+          console.log('All sections:', sections);
+          
+          const targetSection = Array.from(sections).find(section => {
+            const sectionId = section.id;
+            const dataSection = section.getAttribute('data-section');
+            console.log('Checking section:', sectionId, dataSection);
+            
+            return sectionId === targetId || 
+                   section.querySelector(`#${targetId}`) ||
+                   dataSection === targetId;
+          });
+          
+          console.log('Found target section:', targetSection);
+          
+          if (targetSection) {
+            targetSection.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          } else {
+            console.warn(`No section found for ${targetId}`);
+          }
         }
-      }
+      }, 300); // 等待菜单关闭动画
     }
-    setIsOpen(false);
   };
 
   return (
@@ -163,16 +185,12 @@ const Navigation = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 * index, duration: 0.3 }}
                   >
-                    <Button
-                      variant="ghost"
-                      className="text-gray-300 hover:text-white hover:bg-white/10 justify-start px-4 py-3 text-base w-full rounded-lg transition-all duration-200"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleSmoothScroll(item.href);
-                      }}
+                    <button
+                      className="text-gray-300 hover:text-white hover:bg-white/10 justify-start px-4 py-3 text-base w-full rounded-lg transition-all duration-200 text-left"
+                      onClick={() => handleSmoothScroll(item.href)}
                     >
                       {item.name}
-                    </Button>
+                    </button>
                   </motion.div>
                 ))}
               </div>

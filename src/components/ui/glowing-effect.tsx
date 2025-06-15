@@ -173,17 +173,17 @@ const GlowingEffect = memo(
               "glow",
               "rounded-[inherit]",
               'after:content-[""] after:rounded-[inherit] after:absolute',
-              // 手机端优化：使用更小的边框宽度和更适合的定位
-              "after:inset-[calc(-1*var(--glowingeffect-border-width))] md:after:inset-[calc(-1*var(--glowingeffect-border-width))]",
-              "after:[border:var(--glowingeffect-border-width)_solid_transparent]",
+              // 手机端优化：使用固定的边框宽度，避免计算问题
+              "after:inset-[-1px] sm:after:inset-[calc(-1*var(--glowingeffect-border-width))]",
+              "after:[border:1px_solid_transparent] sm:after:[border:var(--glowingeffect-border-width)_solid_transparent]",
               "after:[background:var(--gradient)] after:[background-attachment:fixed]",
               "after:opacity-[var(--active)] after:transition-opacity after:duration-300",
               "after:[mask-clip:padding-box,border-box]",
               "after:[mask-composite:intersect]",
-              // 手机端优化：调整光圈范围和扩散效果
+              // 手机端优化：调整光圈范围，确保在小屏幕上也能正常显示
               "after:[mask-image:linear-gradient(#0000,#0000),conic-gradient(from_calc((var(--start)-var(--spread))*1deg),#00000000_0deg,#fff,#00000000_calc(var(--spread)*2deg))]",
-              // 手机端特殊处理：确保光效在小屏幕上也能正常显示
-              "sm:after:[mask-image:linear-gradient(#0000,#0000),conic-gradient(from_calc((var(--start)-var(--spread))*1deg),#00000000_0deg,#fff,#00000000_calc(var(--spread)*1.5deg))]"
+              // 进一步优化小屏幕光效显示
+              "max-sm:after:[mask-image:linear-gradient(#0000,#0000),conic-gradient(from_calc((var(--start)-15)*1deg),#00000000_0deg,#fff,#00000000_30deg)]"
             )}
           />
         </div>

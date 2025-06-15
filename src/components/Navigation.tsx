@@ -133,7 +133,7 @@ const Navigation = () => {
             </NavigationMenu>
           </div>
 
-          {/* About Button - Desktop */}
+          {/* Desktop About Button */}
           <motion.div
             className="hidden md:block"
             whileHover={{ scale: 1.05 }}
@@ -146,38 +146,32 @@ const Navigation = () => {
             </Link>
           </motion.div>
 
-          {/* Mobile - Right side button group - 进一步调整汉堡菜单位置 */}
-          <div className="md:hidden flex items-center space-x-1">
-            <Link to="/about">
-              <Button variant="outline" size="sm" className="text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200 text-xs px-2 py-1.5">
-                About
-              </Button>
-            </Link>
-            
+          {/* Mobile Menu Button - 重新设计的移动端菜单按钮 */}
+          <div className="md:hidden">
             <motion.div whileTap={{ scale: 0.9 }}>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-white hover:text-gray-300 hover:bg-white/10 p-1.5"
+                className="text-white hover:text-gray-300 hover:bg-white/10 p-2"
               >
-                {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </Button>
             </motion.div>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation - 全新设计的移动端菜单 */}
         <AnimatePresence>
           {isOpen && (
             <motion.div 
-              className="md:hidden bg-black/95 backdrop-blur-xl border-t border-white/10 py-6 px-4 rounded-b-xl"
+              className="md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="flex flex-col space-y-4">
+              <div className="px-4 py-6 space-y-1">
                 {navItems.map((item, index) => (
                   <motion.div
                     key={item.name}
@@ -186,13 +180,30 @@ const Navigation = () => {
                     transition={{ delay: 0.1 * index, duration: 0.3 }}
                   >
                     <button
-                      className="text-gray-300 hover:text-white hover:bg-white/10 justify-start px-4 py-3 text-base w-full rounded-lg transition-all duration-200 text-left"
+                      className="w-full text-left text-gray-300 hover:text-white hover:bg-white/10 px-4 py-3 text-base rounded-lg transition-all duration-200"
                       onClick={() => handleSmoothScroll(item.href)}
                     >
                       {item.name}
                     </button>
                   </motion.div>
                 ))}
+                
+                {/* Mobile About Button */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.6, duration: 0.3 }}
+                  className="pt-4 border-t border-white/10"
+                >
+                  <Link to="/about" onClick={() => setIsOpen(false)}>
+                    <Button 
+                      variant="outline" 
+                      className="w-full text-white border-white/20 hover:bg-white hover:text-black transition-all duration-200"
+                    >
+                      About
+                    </Button>
+                  </Link>
+                </motion.div>
               </div>
             </motion.div>
           )}

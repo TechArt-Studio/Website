@@ -24,9 +24,10 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
-    { name: 'Work', href: '#work' },
-    { name: 'Services', href: '#services' },
-    { name: 'About', href: '#about' },
+    { name: 'Products', href: '#products' },
+    { name: 'About us', href: '#about' },
+    { name: 'Team', href: '#team' },
+    { name: 'Blog', href: '#blog' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -35,13 +36,13 @@ const Navigation = () => {
       scrolled ? 'bg-black/90 backdrop-blur-xl border-b border-white/10' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-lg">
-              <span className="text-black font-bold text-lg">▲</span>
+            <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+              <span className="text-black font-bold text-sm">T</span>
             </div>
-            <span className="text-white font-bold text-xl tracking-tight">MarkdownStudio</span>
+            <span className="text-white font-bold text-xl">Tech-Art</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -62,14 +63,7 @@ const Navigation = () => {
             </NavigationMenu>
             
             <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white hover:bg-white/5">
-              <Mail className="w-5 h-5" />
-            </Button>
-            
-            <Button 
-              size="sm"
-              className="bg-white text-black hover:bg-gray-100 border-0 px-6 py-2 text-sm font-medium rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl"
-            >
-              Let's Talk
+              <Mail className="w-4 h-4" />
             </Button>
           </div>
 
@@ -80,37 +74,24 @@ const Navigation = () => {
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden text-white hover:text-gray-300 hover:bg-white/10"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </Button>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden bg-black/95 backdrop-blur-xl border-t border-white/10 py-6 rounded-b-2xl mt-2">
-            <div className="flex flex-col space-y-4">
+          <div className="md:hidden bg-black/95 backdrop-blur-xl border-t border-white/10 py-4 rounded-b-xl">
+            <div className="flex flex-col space-y-2">
               {navItems.map((item) => (
                 <Button
                   key={item.name}
                   variant="ghost"
-                  className="text-gray-300 hover:text-white hover:bg-white/5 justify-start px-4 py-3 text-sm font-medium"
+                  className="text-gray-300 hover:text-white hover:bg-white/5 justify-start px-4 py-2 text-sm"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
                 </Button>
               ))}
-              
-              <div className="flex items-center justify-between px-4 pt-4 border-t border-white/10">
-                <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white hover:bg-white/5">
-                  <Mail className="w-5 h-5" />
-                </Button>
-                
-                <Button 
-                  size="sm"
-                  className="bg-white text-black hover:bg-gray-100 border-0 px-6 py-2 text-sm font-medium rounded-xl"
-                >
-                  Let's Talk
-                </Button>
-              </div>
             </div>
           </div>
         )}

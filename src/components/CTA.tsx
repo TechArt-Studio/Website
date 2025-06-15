@@ -37,7 +37,7 @@ const CTA = () => {
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
             {siteConfig.cta.title}
           </h2>
-          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto font-light">
+          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto font-normal">
             {siteConfig.cta.subtitle}
           </p>
           

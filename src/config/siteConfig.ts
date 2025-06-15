@@ -1,3 +1,4 @@
+
 export const siteConfig = {
   // Site Information
   site: {
@@ -14,7 +15,7 @@ export const siteConfig = {
       text: "Meet One Calendar"
     },
     title: "Tech-Art",
-    subtitle: "Open a new world with code. We help you build fast, easy, and free solutions.",
+    subtitle: "Open a new world with code.",
     ctaButton: {
       text: "Learn More",
       link: "#features"
@@ -51,7 +52,7 @@ export const siteConfig = {
   // About Section
   about: {
     title: "What is Tech-Art?",
-    description: "Tech-Art is a studio founded in China whose main mission is to help you build amazing applications.",
+    description: "Tech-Art is a studio founded in China with a main mission to help you build amazing applications.",
     features: [
       {
         icon: "Zap",

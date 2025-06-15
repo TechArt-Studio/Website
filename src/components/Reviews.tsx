@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -58,16 +59,16 @@ const Reviews = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative"
+              className="relative h-full rounded-2xl border border-white/10 p-2"
             >
               <GlowingEffect
-                blur={3}
-                spread={20}
-                proximity={50}
-                className="rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                spread={40}
+                glow={true}
+                proximity={64}
+                inactiveZone={0.01}
               />
-              <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm h-full group relative">
-                <CardContent className="p-6">
+              <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl bg-black/40 backdrop-blur-sm p-6 border border-white/5 hover:bg-white/10 transition-all duration-300 group">
+                <div className="relative flex flex-1 flex-col justify-between gap-4">
                   <div className="flex items-center mb-4">
                     {[...Array(5)].map((_, i) => (
                       <Star 
@@ -93,8 +94,8 @@ const Reviews = () => {
                       <p className="text-gray-400 text-sm">{review.username}</p>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

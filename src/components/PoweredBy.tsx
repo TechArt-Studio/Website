@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Zap, Cloud, Shield, Globe, Database, Smartphone, Github } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -71,18 +72,28 @@ const PoweredBy = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="relative group"
+                className="relative h-full rounded-2xl border border-white/10 p-2"
               >
                 <GlowingEffect
-                  blur={3}
-                  spread={20}
-                  proximity={50}
-                  className="rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  spread={40}
+                  glow={true}
+                  proximity={64}
+                  inactiveZone={0.01}
                 />
-                <div className="flex flex-col items-center p-4 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 relative">
-                  <IconComponent className="w-8 h-8 text-white mb-3 group-hover:scale-110 transition-transform" />
-                  <h4 className="text-white font-semibold text-sm mb-1">{service.name}</h4>
-                  <p className="text-gray-400 text-xs text-center">{service.description}</p>
+                <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl bg-black/40 backdrop-blur-sm p-6 border border-white/5 hover:bg-white/10 transition-all duration-300 group">
+                  <div className="relative flex flex-1 flex-col justify-between gap-4">
+                    <motion.div 
+                      className="inline-flex p-2 rounded-lg bg-white/10 mb-3 group-hover:bg-white group-hover:text-black transition-all duration-300 w-fit mx-auto"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <IconComponent className="w-5 h-5 text-white group-hover:text-black" />
+                    </motion.div>
+                    <div className="space-y-3 text-center">
+                      <h4 className="text-white font-semibold text-sm">{service.name}</h4>
+                      <p className="text-gray-400 text-xs">{service.description}</p>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             );

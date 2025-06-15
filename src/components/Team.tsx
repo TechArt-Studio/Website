@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -39,34 +40,36 @@ const Team = () => {
           {team.map((member, index) => (
             <motion.div 
               key={index} 
-              className="relative group h-full"
+              className="relative h-full rounded-2xl border border-white/10 p-2"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
             >
               <GlowingEffect
-                blur={3}
-                spread={20}
-                proximity={50}
-                className="rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                spread={40}
+                glow={true}
+                proximity={64}
+                inactiveZone={0.01}
               />
-              <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm relative h-full">
-                <CardContent className="p-8 text-center h-full flex flex-col justify-center">
+              <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl bg-black/40 backdrop-blur-sm p-6 border border-white/5 hover:bg-white/10 transition-all duration-300 group">
+                <div className="relative flex flex-1 flex-col justify-between gap-4">
                   <Avatar className="w-20 h-20 mx-auto mb-4 bg-white/20">
                     <AvatarImage src={member.avatar} alt={member.name} />
                     <AvatarFallback className="text-white text-lg font-semibold bg-transparent">
                       {member.initials}
                     </AvatarFallback>
                   </Avatar>
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    {member.name}
-                  </h3>
-                  <p className="text-gray-400">
-                    {member.role}
-                  </p>
-                </CardContent>
-              </Card>
+                  <div className="space-y-3 text-center">
+                    <h3 className="text-xl font-semibold text-white">
+                      {member.name}
+                    </h3>
+                    <p className="text-gray-400">
+                      {member.role}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

@@ -21,57 +21,55 @@ const Contact = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <motion.div 
-            className="relative group h-full"
+            className="relative h-full rounded-2xl border border-white/10 p-2"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
             <GlowingEffect
-              blur={3}
-              spread={20}
-              proximity={50}
-              className="rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              spread={40}
+              glow={true}
+              proximity={64}
+              inactiveZone={0.01}
             />
-            <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 relative h-full">
-              <CardHeader>
+            <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl bg-black/40 backdrop-blur-sm p-6 border border-white/5 hover:bg-white/10 transition-all duration-300 group">
+              <div className="relative flex flex-1 flex-col justify-between gap-4">
                 <CardTitle className="text-white">Our Location</CardTitle>
-              </CardHeader>
-              <CardContent>
                 <CardDescription className="text-gray-400 text-lg">
                   China
                 </CardDescription>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </motion.div>
           
           <motion.div 
-            className="relative group h-full"
+            className="relative h-full rounded-2xl border border-white/10 p-2"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <GlowingEffect
-              blur={3}
-              spread={20}
-              proximity={50}
-              className="rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              spread={40}
+              glow={true}
+              proximity={64}
+              inactiveZone={0.01}
             />
-            <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 relative h-full">
-              <CardHeader>
-                <CardTitle className="text-white">How can we help you?</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <CardDescription className="text-gray-400 text-lg">
-                  www@xyehr.cn
-                </CardDescription>
-                <Button variant="outline" className="border-white/20 text-white hover:bg-white/10">
-                  <Mail className="mr-2 w-4 h-4" />
-                  Send Email
-                </Button>
-              </CardContent>
-            </Card>
+            <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl bg-black/40 backdrop-blur-sm p-6 border border-white/5 hover:bg-white/10 transition-all duration-300 group">
+              <div className="relative flex flex-1 flex-col justify-between gap-4">
+                <div className="space-y-4">
+                  <CardTitle className="text-white">How can we help you?</CardTitle>
+                  <CardDescription className="text-gray-400 text-lg">
+                    www@xyehr.cn
+                  </CardDescription>
+                  <Button variant="outline" className="border-white/20 text-white hover:bg-white/10">
+                    <Mail className="mr-2 w-4 h-4" />
+                    Send Email
+                  </Button>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

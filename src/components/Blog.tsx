@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -70,20 +69,19 @@ const Blog = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative group"
+              className="relative h-full rounded-2xl border border-white/10 p-2"
             >
               <GlowingEffect
-                blur={3}
-                spread={20}
-                proximity={50}
-                disabled={false}
-                className="rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                spread={40}
+                glow={true}
+                proximity={64}
+                inactiveZone={0.01}
               />
-              <Card 
-                className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm h-full cursor-pointer relative"
+              <div 
+                className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl bg-black/40 backdrop-blur-sm p-6 border border-white/5 hover:bg-white/10 transition-all duration-300 group cursor-pointer"
                 onClick={() => handlePostClick(post.slug)}
               >
-                <CardHeader>
+                <div className="relative flex flex-1 flex-col justify-between gap-4">
                   {post.tag && (
                     <motion.div
                       initial={{ scale: 0 }}
@@ -95,17 +93,17 @@ const Blog = () => {
                       </Badge>
                     </motion.div>
                   )}
-                  <CardTitle className="text-lg font-semibold text-white leading-tight group-hover:text-gray-200 transition-colors">
-                    {post.title}
-                  </CardTitle>
-                  <div className="text-sm text-gray-500">{post.date}</div>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-400 leading-relaxed">
-                    {post.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-semibold text-white leading-tight group-hover:text-gray-200 transition-colors">
+                      {post.title}
+                    </h3>
+                    <div className="text-sm text-gray-500">{post.date}</div>
+                    <p className="text-gray-400 leading-relaxed text-sm">
+                      {post.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           ))}
         </motion.div>

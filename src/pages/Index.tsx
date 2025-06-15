@@ -8,7 +8,7 @@ import CTA from '@/components/CTA';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-indigo-50">
       <Navigation />
       <Hero />
       <Features />
@@ -16,17 +16,17 @@ const Index = () => {
       <CTA />
       
       {/* Footer */}
-      <footer className="py-12 bg-black border-t border-white/10">
+      <footer className="py-16 bg-gradient-to-r from-gray-50 to-blue-50 border-t border-gray-200">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xs">M</span>
+            <div className="flex items-center space-x-3 mb-6 md:mb-0">
+              <div className="w-8 h-8 hero-gradient rounded-xl flex items-center justify-center shadow-lg">
+                <span className="text-white font-bold text-lg">M</span>
               </div>
-              <span className="text-white font-medium">MarkdownStudio</span>
+              <span className="text-gray-800 font-bold text-xl">MarkdownStudio</span>
             </div>
             
-            <div className="text-gray-400 text-sm">
+            <div className="text-gray-600 text-lg">
               © 2024 MarkdownStudio. 让内容创作变得简单。
             </div>
           </div>

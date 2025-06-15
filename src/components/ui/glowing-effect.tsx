@@ -1,3 +1,4 @@
+
 "use client";
 
 import { memo, useCallback, useEffect, useRef } from "react";
@@ -28,7 +29,7 @@ const GlowingEffect = memo(
     className,
     movementDuration = 2,
     borderWidth = 1,
-    disabled = true,
+    disabled = false,
   }: GlowingEffectProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const lastPosition = useRef({ x: 0, y: 0 });

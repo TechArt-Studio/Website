@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -41,8 +42,10 @@
 
 /* Dark mode studio styles */
 .grid-pattern {
-  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0);
-  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(90deg, rgba(128,128,128,0.3) 1px, transparent 1px),
+    linear-gradient(rgba(128,128,128,0.3) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
 .text-shine {
@@ -182,17 +185,17 @@
   animation: accordion-up 0.3s ease-out;
 }
 
-/* Square pattern background */
+/* Square pattern background with visible gray squares */
 .square-pattern {
   background-image: 
-    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px),
-    linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(90deg, rgba(128,128,128,0.4) 1px, transparent 1px),
+    linear-gradient(rgba(128,128,128,0.4) 1px, transparent 1px);
+  background-size: 50px 50px;
 }
 
 .square-pattern-subtle {
   background-image: 
-    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
-    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 60px 60px;
+    linear-gradient(90deg, rgba(128,128,128,0.2) 1px, transparent 1px),
+    linear-gradient(rgba(128,128,128,0.2) 1px, transparent 1px);
+  background-size: 80px 80px;
 }

@@ -3,6 +3,7 @@ import React from 'react';
 import { Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { GlowingEffect } from '@/components/ui/glowing-effect';
 
 const Contact = () => {
   return (
@@ -18,31 +19,49 @@ const Contact = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
-            <CardHeader>
-              <CardTitle className="text-white">Our Location</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription className="text-gray-400 text-lg">
-                China
-              </CardDescription>
-            </CardContent>
-          </Card>
+          <div className="relative group">
+            <GlowingEffect
+              blur={3}
+              spread={20}
+              proximity={50}
+              disabled={false}
+              className="rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            />
+            <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 relative">
+              <CardHeader>
+                <CardTitle className="text-white">Our Location</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-gray-400 text-lg">
+                  China
+                </CardDescription>
+              </CardContent>
+            </Card>
+          </div>
           
-          <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
-            <CardHeader>
-              <CardTitle className="text-white">How can we help you?</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <CardDescription className="text-gray-400 text-lg">
-                www@xyehr.cn
-              </CardDescription>
-              <Button variant="outline" className="border-white/20 text-white hover:bg-white/10">
-                <Mail className="mr-2 w-4 h-4" />
-                Send Email
-              </Button>
-            </CardContent>
-          </Card>
+          <div className="relative group">
+            <GlowingEffect
+              blur={3}
+              spread={20}
+              proximity={50}
+              disabled={false}
+              className="rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            />
+            <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 relative">
+              <CardHeader>
+                <CardTitle className="text-white">How can we help you?</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <CardDescription className="text-gray-400 text-lg">
+                  www@xyehr.cn
+                </CardDescription>
+                <Button variant="outline" className="border-white/20 text-white hover:bg-white/10">
+                  <Mail className="mr-2 w-4 h-4" />
+                  Send Email
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
     </section>

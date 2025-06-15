@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { motion } from 'framer-motion';
 import { Zap, Heart, Gift } from 'lucide-react';
 import { siteConfig } from '@/config/siteConfig';
+import { GlowingEffect } from '@/components/ui/glowing-effect';
 
 const About = () => {
   const iconMap = {
@@ -83,6 +84,13 @@ const About = () => {
                     }}
                     className="relative h-full rounded-2xl border border-white/10 p-6 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group"
                   >
+                    <GlowingEffect
+                      blur={3}
+                      spread={20}
+                      proximity={50}
+                      disabled={false}
+                      className="rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    />
                     <div className="relative flex h-full flex-col justify-between gap-6">
                       <div className="relative flex flex-1 flex-col justify-between gap-4">
                         <motion.div 

@@ -52,7 +52,7 @@ export const siteConfig = {
   // About Section
   about: {
     title: "What is Tech-Art?",
-    description: "Tech-Art is a studio founded in China with a main mission to help you build amazing applications.",
+    description: "Tech-Art is a studio main mission to help you build amazing applications.",
     features: [
       {
         icon: "Zap",
@@ -154,7 +154,7 @@ export const siteConfig = {
     subtitle: "Join us to open a new world of code and experience fast, simple, and free solutions",
     button: {
       text: "Join Now",
-      link: "#contact"
+      link: "https://airtable.com/app4kvVeOe2p7NIIf/pagTgearHfOHwZDOk/form"
     }
   },
 
@@ -165,26 +165,29 @@ export const siteConfig = {
       {
         title: "Products",
         links: [
-          { text: "One Calendar", link: "#" },
-          { text: "Mail", link: "#" }
+          { text: "One Captcha", link: "/post/one-captcha" },
+          { text: "One Calendar", link: "https://onecalendar.us.kg" },
+          { text: "One Pass", link: "https://pass.xyehr.cn" },
+          { text: "Easy Note", link: "https://easynote.us.kg" }
         ]
       },
       {
         title: "Team",
         links: [
           { text: "About us", link: "/about" },
-          { text: "Join us", link: "#contact" },
-          { text: "Open Source", link: "#" },
-          { text: "Sustainability", link: "#" }
+          { text: "Join us", link: "/join-us" },
+          { text: "Developer Center", link: "https://x.com/TechArt_Dev" },
+          { text: "Open Source", link: "/open-source" },
+          { text: "Sponsor", link: "/sponsor" }
         ]
       },
       {
         title: "Resource",
         links: [
-          { text: "Press and Media", link: "/blog" },
-          { text: "Contact us", link: "#contact" },
-          { text: "Help & Docs", link: "#" },
-          { text: "Live Help", link: "#" }
+          { text: "Press and Media", link: "/archive" },
+          { text: "Contact us", link: "/contact-us" },
+          { text: "Help & Docs", link: "https://help.xyehr.cn/" },
+          { text: "Live Help", link: "mailto:www@xyehr.cn" }
         ]
       }
     ]

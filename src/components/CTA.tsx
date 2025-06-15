@@ -14,7 +14,7 @@ const CTA = () => {
         contactSection.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
-      window.location.href = targetLink;
+      window.open(targetLink, '_blank');
     }
   };
 

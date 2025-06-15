@@ -70,17 +70,17 @@ const Blog = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative"
+              className="relative group"
             >
               <GlowingEffect
-                blur={5}
-                spread={30}
-                proximity={100}
+                blur={3}
+                spread={20}
+                proximity={50}
                 disabled={false}
                 className="rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               />
               <Card 
-                className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm h-full group cursor-pointer relative"
+                className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm h-full cursor-pointer relative"
                 onClick={() => handlePostClick(post.slug)}
               >
                 <CardHeader>

@@ -283,11 +283,11 @@ const ShaderMaterial = ({
     return materialObject;
   }, [size.width, size.height, source]);
 
-  return (
-    <mesh ref={ref}>
-      <planeGeometry args={[2, 2]} />
-      <primitive object={material} attach="material" />
-    </mesh>
+  return React.createElement(
+    'mesh',
+    { ref },
+    React.createElement('planeGeometry', { args: [2, 2] }),
+    React.createElement('primitive', { object: material, attach: 'material' })
   );
 };
 

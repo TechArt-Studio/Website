@@ -32,7 +32,7 @@ const FAQ = () => {
     <section className="py-24 bg-black relative">
       <div className="absolute inset-0 grid-pattern opacity-10" />
       
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-4xl mx-auto px-6 sm:px-6 lg:px-8">
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -65,7 +65,7 @@ const FAQ = () => {
               >
                 <AccordionItem 
                   value={`item-${index}`}
-                  className="bg-white/5 border-white/10 rounded-lg px-6 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 border"
+                  className="bg-gray-900/50 border-gray-800 rounded-lg px-6 backdrop-blur-sm hover:bg-gray-800/50 transition-all duration-300 border"
                 >
                   <AccordionTrigger className="text-left text-white hover:text-gray-300 py-6 transition-colors duration-200">
                     {faq.question}

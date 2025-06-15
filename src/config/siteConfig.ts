@@ -1,9 +1,8 @@
-
 export const siteConfig = {
   // Site Information
   site: {
     name: "Tech Art",
-    tagline: "Open a new world with code",
+    tagline: "Tech-Art is a studio that collaboratively creates innovative, high-quality open-source projects.",
     description: "",
     logo: "https://docs.xyehr.cn/images/logo-dark.svg"
   },
@@ -165,7 +164,7 @@ export const siteConfig = {
       {
         title: "Products",
         links: [
-          { text: "One Calendar", link: "https://onecalendar.us.kg" },
+          { text: "One Calendar", link: "https://calendar.xyehr.cn" },
           { text: "Mail", link: "https://github.com/EvanTechDev/Mail" }
         ]
       },
@@ -182,9 +181,9 @@ export const siteConfig = {
       {
         title: "Resource",
         links: [
-          { text: "Press and Media", link: "/archive" },
+          { text: "Press and Media", link: "/blog" },
           { text: "Contact us", link: "/contact-us" },
-          { text: "Help & Docs", link: "https://help.xyehr.cn/" },
+          { text: "Help & Docs", link: "https://docs.xyehr.cn/" },
           { text: "Live Help", link: "mailto:www@xyehr.cn" }
         ]
       }

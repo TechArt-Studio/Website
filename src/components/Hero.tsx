@@ -11,13 +11,13 @@ const Hero = () => {
       {/* Grid background */}
       <div className="absolute inset-0 grid-pattern opacity-20" />
       
-      {/* Enhanced spotlight effect from top-left targeting the title */}
-      <div className="absolute top-0 left-0 w-[800px] h-[800px] opacity-60">
-        <div className="w-full h-full bg-gradient-conic from-white/30 via-white/10 to-transparent rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2 rotate-45" />
+      {/* 从左上角无视padding的斜打光，直接打向标题 */}
+      <div className="absolute -top-32 -left-32 w-[1000px] h-[1000px] opacity-40">
+        <div className="w-full h-full bg-gradient-conic from-white/40 via-white/15 to-transparent rounded-full blur-3xl transform rotate-45" />
       </div>
       
-      {/* Additional focused spotlight for title */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-radial from-white/25 via-white/8 to-transparent rounded-full blur-2xl transform -translate-x-32 -translate-y-32" />
+      {/* 更精准的聚焦打光 */}
+      <div className="absolute top-1/3 left-1/3 w-[600px] h-[400px] bg-gradient-radial from-white/30 via-white/10 to-transparent rounded-full blur-3xl transform -translate-x-48 -translate-y-24 -rotate-12" />
       
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
@@ -50,10 +50,17 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              {/* Enhanced metallic gradient effect */}
-              <span className="bg-gradient-to-b from-white via-gray-200 to-gray-400 bg-clip-text text-transparent relative z-10 drop-shadow-lg">
-                <span className="bg-gradient-to-b from-white to-white/90 bg-clip-text text-transparent">Tech</span>
-                <span className="bg-gradient-to-b from-gray-300 via-gray-400 to-gray-500 bg-clip-text text-transparent">-Art</span>
+              {/* 金属质感效果 - 字体上半部分白色，下半部分灰银色 */}
+              <span className="relative inline-block">
+                <span className="absolute inset-0 bg-gradient-to-b from-white via-white to-transparent bg-clip-text text-transparent">
+                  Tech-Art
+                </span>
+                <span className="relative bg-gradient-to-b from-transparent via-transparent to-gray-400 bg-clip-text text-transparent">
+                  Tech-Art
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-b from-white/90 via-gray-200 to-gray-500 bg-clip-text text-transparent opacity-80">
+                  Tech-Art
+                </span>
               </span>
             </motion.h1>
             
@@ -84,7 +91,7 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="lg"
-              className="border-2 border-white/30 text-white hover:bg-white/10 px-8 py-3 text-lg font-medium rounded-md transition-all duration-200 backdrop-blur-sm"
+              className="border-2 border-white/30 text-white hover:bg-white/10 px-8 py-3 text-lg font-medium rounded-md transition-all duration-200 backdrop-blur-sm overflow-hidden"
             >
               <Calendar className="mr-2 w-5 h-5" />
               Try One Calendar

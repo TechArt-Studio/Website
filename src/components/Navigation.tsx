@@ -88,7 +88,7 @@ const Navigation = () => {
               </Button>
             </motion.div>
 
-            {/* About Button */}
+            {/* About Button - 最右边 */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

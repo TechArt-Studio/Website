@@ -4,10 +4,15 @@ import { ArrowRight, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
+import { GlowingEffect } from '@/components/ui/glowing-effect';
+import { Spotlight } from '@/components/ui/spotlight';
 
 const Hero = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+      {/* Spotlight 背景效果 */}
+      <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
+      
       {/* Grid background */}
       <div className="absolute inset-0 grid-pattern opacity-20" />
       
@@ -42,12 +47,21 @@ const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            <Card className="inline-flex items-center px-4 py-2 bg-white/5 border-white/20 backdrop-blur-sm">
-              <CardContent className="flex items-center space-x-2 p-0">
-                <Calendar className="w-4 h-4 text-white" />
-                <span className="text-sm text-white/90 font-medium">Meet One Calendar</span>
-              </CardContent>
-            </Card>
+            <div className="relative inline-block">
+              <GlowingEffect 
+                disabled={false}
+                proximity={200}
+                blur={20}
+                spread={80}
+                className="opacity-50"
+              />
+              <Card className="relative inline-flex items-center px-4 py-2 bg-white/5 border-white/20 backdrop-blur-sm">
+                <CardContent className="flex items-center space-x-2 p-0">
+                  <Calendar className="w-4 h-4 text-white" />
+                  <span className="text-sm text-white/90 font-medium">Meet One Calendar</span>
+                </CardContent>
+              </Card>
+            </div>
           </motion.div>
           
           <div className="space-y-6">
@@ -86,13 +100,22 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
           >
-            <Button 
-              size="lg" 
-              className="bg-white text-black hover:bg-gray-100 border-0 px-8 py-3 text-lg font-medium group transition-all duration-200 rounded-md shadow-xl"
-            >
-              Learn More
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <div className="relative">
+              <GlowingEffect 
+                disabled={false}
+                proximity={150}
+                blur={15}
+                spread={60}
+                className="opacity-60"
+              />
+              <Button 
+                size="lg" 
+                className="relative bg-white text-black hover:bg-gray-100 border-0 px-8 py-3 text-lg font-medium group transition-all duration-200 rounded-md shadow-xl"
+              >
+                Learn More
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </div>
           </motion.div>
         </motion.div>
       </div>

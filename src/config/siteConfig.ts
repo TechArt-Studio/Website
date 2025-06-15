@@ -141,8 +141,8 @@ export const siteConfig = {
     title: "Powered by",
     subtitle: "Using industry-leading technologies and services",
     services: [
-      { icon: "Zap", name: "Vercel", description: "Fast deployment" },
-      { icon: "Cloud", name: "Cloudflare", description: "CDN acceleration" },
+      { icon: "VercelLogo", name: "Vercel", description: "Fast deployment" },
+      { icon: "CloudflareLogo", name: "Cloudflare", description: "CDN acceleration" },
       { icon: "Github", name: "GitHub", description: "Version control" },
       { icon: "Shield", name: "Clerk", description: "Authentication" }
     ]

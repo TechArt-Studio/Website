@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface BlogPost {
   title: string;
@@ -39,6 +41,19 @@ Open Workspace represents a new paradigm in collaborative software development a
 - **Advanced project management**: Keep track of your projects with our intuitive tools
 - **Secure and reliable**: Your data is protected with enterprise-grade security
 
+### Getting Started
+
+To get started with Open Workspace, simply create an account and start collaborating with your team. The interface is intuitive and easy to use, so you can focus on what matters most - your work.
+
+#### Benefits
+
+1. Increased productivity
+2. Better team communication
+3. Streamlined workflows
+4. Enhanced creativity
+
+> "Open Workspace has transformed the way our team works together. It's incredible how much more productive we've become." - Sarah Johnson, Lead Developer
+
 Join us as we redefine what it means to work together in the digital age.`,
             slug: "welcome-to-open-workspace"
           },
@@ -53,19 +68,33 @@ One Calendar is revolutionizing the way we manage our time and schedules. Built 
 ## Features
 
 ### Unlimited Schedule Storage
-Never worry about running out of space for your events and appointments.
+Never worry about running out of space for your events and appointments. Store as many events as you need without any limitations.
 
 ### AI-Powered Scheduling
-Our intelligent assistant helps you find the perfect time slots for your meetings.
+Our intelligent assistant helps you find the perfect time slots for your meetings by analyzing your calendar patterns and preferences.
 
 ### Unlimited Sharing
-Share your calendars with team members, family, and friends without any restrictions.
+Share your calendars with team members, family, and friends without any restrictions. Collaborate seamlessly across different groups.
 
 ### Analytics Tools
-Gain insights into how you spend your time with our comprehensive analytics.
+Gain insights into how you spend your time with our comprehensive analytics:
+
+- Time tracking
+- Productivity metrics
+- Meeting frequency analysis
+- Goal tracking
 
 ### Cloud Backup
-Your data is automatically backed up to the cloud for peace of mind.
+Your data is automatically backed up to the cloud for peace of mind. Never lose your important schedule information.
+
+## Getting Started
+
+1. Download One Calendar from our website
+2. Create your account
+3. Import your existing calendars
+4. Start scheduling with AI assistance
+
+> **Pro Tip**: Use our AI scheduling feature to automatically find the best meeting times for all participants.
 
 Get started with One Calendar today and experience the future of scheduling.`,
             slug: "introducing-one-calendar"
@@ -85,17 +114,64 @@ TOTP generates a unique 6-digit code every 30 seconds based on:
 - Shared secret key
 - HMAC-SHA1 algorithm
 
+### The Algorithm
+
+The TOTP algorithm follows these steps:
+
+1. **Time Step Calculation**: \`T = (Current Unix Time - T0) / X\`
+   - T0 = Unix time start (usually 0)
+   - X = Time step (usually 30 seconds)
+
+2. **HMAC Generation**: \`HMAC = HMAC-SHA1(Secret, T)\`
+
+3. **Code Extraction**: Extract 6 digits from the HMAC
+
 ## Advantages
 
 - **Offline Generation**: No internet connection required
-- **Enhanced Security**: Codes expire quickly
+- **Enhanced Security**: Codes expire quickly (30 seconds)
 - **Wide Support**: Compatible with most authenticator apps
+- **Standardized**: Based on RFC 6238
 
 ## Security Considerations
 
-- **Time Synchronization**: Devices must have accurate time
-- **Key Storage**: Secret keys must be stored securely
-- **Backup Codes**: Always have backup authentication methods
+### Time Synchronization
+Devices must have accurate time. A few seconds of drift is usually acceptable, but large discrepancies will cause authentication failures.
+
+### Key Storage
+Secret keys must be stored securely:
+- Use secure enclaves when available
+- Encrypt keys at rest
+- Implement proper access controls
+
+### Backup Codes
+Always have backup authentication methods:
+- Recovery codes
+- Alternative authentication methods
+- Account recovery procedures
+
+## Implementation Example
+
+\`\`\`javascript
+function generateTOTP(secret, timeStep = 30) {
+  const time = Math.floor(Date.now() / 1000);
+  const counter = Math.floor(time / timeStep);
+  
+  // Generate HMAC-SHA1
+  const hmac = crypto.createHmac('sha1', secret);
+  hmac.update(Buffer.from(counter.toString(16).padStart(16, '0'), 'hex'));
+  const hash = hmac.digest();
+  
+  // Extract 6-digit code
+  const offset = hash[hash.length - 1] & 0xf;
+  const code = ((hash[offset] & 0x7f) << 24) |
+               ((hash[offset + 1] & 0xff) << 16) |
+               ((hash[offset + 2] & 0xff) << 8) |
+               (hash[offset + 3] & 0xff);
+  
+  return (code % 1000000).toString().padStart(6, '0');
+}
+\`\`\`
 
 TOTP remains one of the most reliable forms of two-factor authentication available today.`,
             slug: "totp-security"
@@ -157,14 +233,29 @@ TOTP remains one of the most reliable forms of two-factor authentication availab
                 {post.tag}
               </span>
             )}
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              {post.title}
-            </h1>
-            <p className="text-gray-400 mb-8">{post.date}</p>
-            <div 
-              className="text-gray-300 leading-relaxed whitespace-pre-line"
-              dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br/>') }}
-            />
+            <div className="text-gray-400 mb-8">{post.date}</div>
+            <div className="markdown-content">
+              <ReactMarkdown 
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  h1: ({children}) => <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">{children}</h1>,
+                  h2: ({children}) => <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 mt-8">{children}</h2>,
+                  h3: ({children}) => <h3 className="text-xl md:text-2xl font-bold text-white mb-3 mt-6">{children}</h3>,
+                  h4: ({children}) => <h4 className="text-lg md:text-xl font-bold text-white mb-2 mt-4">{children}</h4>,
+                  p: ({children}) => <p className="text-gray-300 leading-relaxed mb-4">{children}</p>,
+                  ul: ({children}) => <ul className="text-gray-300 mb-4 list-disc list-inside space-y-2">{children}</ul>,
+                  ol: ({children}) => <ol className="text-gray-300 mb-4 list-decimal list-inside space-y-2">{children}</ol>,
+                  li: ({children}) => <li className="text-gray-300">{children}</li>,
+                  strong: ({children}) => <strong className="text-white font-semibold">{children}</strong>,
+                  code: ({children}) => <code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">{children}</code>,
+                  pre: ({children}) => <pre className="bg-gray-900 border border-gray-700 rounded-lg p-4 overflow-x-auto mb-4">{children}</pre>,
+                  blockquote: ({children}) => <blockquote className="border-l-4 border-gray-600 pl-4 italic text-gray-400 mb-4">{children}</blockquote>,
+                  a: ({href, children}) => <a href={href} className="text-blue-400 hover:text-blue-300 underline">{children}</a>,
+                }}
+              >
+                {post.content}
+              </ReactMarkdown>
+            </div>
           </article>
         </motion.div>
       </div>

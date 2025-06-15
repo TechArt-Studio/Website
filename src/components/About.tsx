@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   const features = [
-    { title: "Fast", subtitle: "Performance", description: "Lightning-fast applications built for speed" },
-    { title: "Easy", subtitle: "To Use", description: "Intuitive interfaces that anyone can master" },
-    { title: "Free", subtitle: "Always", description: "Open-source and completely free forever" }
+    { title: "Fast", subtitle: "Performance", description: "Lightning-fast applications built for speed", color: "from-blue-400/20 to-blue-600/20" },
+    { title: "Easy", subtitle: "To Use", description: "Intuitive interfaces that anyone can master", color: "from-green-400/20 to-green-600/20" },
+    { title: "Free", subtitle: "Always", description: "Open-source and completely free forever", color: "from-purple-400/20 to-purple-600/20" }
   ];
 
   return (
@@ -45,7 +45,7 @@ const About = () => {
             </div>
             
             <motion.div 
-              className="grid grid-cols-1 gap-6"
+              className="grid grid-cols-1 md:grid-cols-3 gap-4"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -54,30 +54,26 @@ const About = () => {
               {features.map((item, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 * index, duration: 0.6 }}
                 >
-                  <Card className="bg-gradient-to-r from-white/10 to-white/5 border-white/20 p-6 transition-all duration-300 hover:border-white/30 hover:shadow-xl backdrop-blur-sm">
-                    <CardContent className="p-0 flex items-center space-x-6">
-                      <div className="flex-shrink-0">
-                        <div className="w-16 h-16 bg-gradient-to-br from-white/20 to-white/10 rounded-lg flex items-center justify-center">
-                          <span className="text-2xl font-bold text-white">{item.title.charAt(0)}</span>
-                        </div>
+                  <Card className={`bg-gradient-to-br ${item.color} border-white/20 p-4 transition-all duration-300 hover:border-white/30 backdrop-blur-sm h-full`}>
+                    <CardContent className="p-0 text-center space-y-3">
+                      <div className="w-12 h-12 bg-gradient-to-br from-white/30 to-white/10 rounded-lg flex items-center justify-center mx-auto">
+                        <span className="text-xl font-bold text-white">{item.title.charAt(0)}</span>
                       </div>
-                      <div className="flex-grow">
-                        <div className="flex items-baseline space-x-2 mb-2">
-                          <h3 className="text-2xl font-bold text-white">{item.title}</h3>
-                          <span className="text-sm text-gray-400 font-medium">{item.subtitle}</span>
-                        </div>
-                        <p className="text-sm text-gray-300 leading-relaxed">{item.description}</p>
+                      <div>
+                        <h3 className="text-xl font-bold text-white">{item.title}</h3>
+                        <span className="text-xs text-gray-400 font-medium">{item.subtitle}</span>
                       </div>
+                      <p className="text-sm text-gray-300 leading-relaxed">{item.description}</p>
                     </CardContent>
                   </Card>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
           </motion.div>
           
           <motion.div 

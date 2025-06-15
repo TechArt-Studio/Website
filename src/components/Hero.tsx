@@ -11,8 +11,13 @@ const Hero = () => {
       {/* Grid background */}
       <div className="absolute inset-0 grid-pattern opacity-20" />
       
-      {/* Spotlight effect */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-radial from-white/20 via-white/5 to-transparent rounded-full blur-3xl transform -translate-x-32 -translate-y-32 animate-pulse-slow" />
+      {/* Enhanced spotlight effect from top-left targeting the title */}
+      <div className="absolute top-0 left-0 w-[800px] h-[800px] opacity-60">
+        <div className="w-full h-full bg-gradient-conic from-white/30 via-white/10 to-transparent rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2 rotate-45" />
+      </div>
+      
+      {/* Additional focused spotlight for title */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-radial from-white/25 via-white/8 to-transparent rounded-full blur-2xl transform -translate-x-32 -translate-y-32" />
       
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
@@ -40,15 +45,15 @@ const Hero = () => {
           
           <div className="space-y-6">
             <motion.h1 
-              className="text-5xl md:text-7xl font-bold leading-tight text-white relative"
+              className="text-5xl md:text-7xl font-bold leading-tight relative"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              {/* Spotlight overlay on title */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent rounded-lg blur-2xl" />
-              <span className="text-shine bg-gradient-to-r from-white via-gray-300 to-white bg-clip-text text-transparent relative z-10">
-                Tech-Art
+              {/* Enhanced metallic gradient effect */}
+              <span className="bg-gradient-to-b from-white via-gray-200 to-gray-400 bg-clip-text text-transparent relative z-10 drop-shadow-lg">
+                <span className="bg-gradient-to-b from-white to-white/90 bg-clip-text text-transparent">Tech</span>
+                <span className="bg-gradient-to-b from-gray-300 via-gray-400 to-gray-500 bg-clip-text text-transparent">-Art</span>
               </span>
             </motion.h1>
             
@@ -68,32 +73,22 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
           >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <Button 
+              size="lg" 
+              className="bg-white text-black hover:bg-gray-100 border-0 px-8 py-3 text-lg font-medium group transition-all duration-200 rounded-md shadow-xl"
             >
-              <Button 
-                size="lg" 
-                className="bg-white text-black hover:bg-gray-100 border-0 px-8 py-3 text-lg font-medium group transition-all duration-200 rounded-xl shadow-xl hover:shadow-2xl"
-              >
-                Learn More
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </motion.div>
+              Learn More
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
             
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <Button 
+              variant="outline" 
+              size="lg"
+              className="border-2 border-white/30 text-white hover:bg-white/10 px-8 py-3 text-lg font-medium rounded-md transition-all duration-200 backdrop-blur-sm"
             >
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-2 border-white/30 text-white hover:bg-white/10 px-8 py-3 text-lg font-medium rounded-xl transition-all duration-200 backdrop-blur-sm"
-              >
-                <Calendar className="mr-2 w-5 h-5" />
-                Try One Calendar
-              </Button>
-            </motion.div>
+              <Calendar className="mr-2 w-5 h-5" />
+              Try One Calendar
+            </Button>
           </motion.div>
         </motion.div>
       </div>

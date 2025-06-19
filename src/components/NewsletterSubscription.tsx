@@ -7,6 +7,7 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from '@/component
 import { useForm } from 'react-hook-form';
 import { Mail } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { Resend } from 'resend';
 
 interface NewsletterFormData {
   email: string;
@@ -29,31 +30,29 @@ const NewsletterSubscription = () => {
     try {
       // Get the Resend API key from environment variables
       const resendApiKey = import.meta.env.VITE_RESEND_API_KEY;
+      const audienceId = import.meta.env.VITE_RESEND_AUDIENCE_ID;
       
       if (!resendApiKey) {
         throw new Error('Resend API key not found');
       }
 
-      // Here you would integrate with Resend API
-      // For now, we'll simulate the subscription
-      const response = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${resendApiKey}`,
-        },
-        body: JSON.stringify({
-          email: data.email,
-          firstName: '',
-          lastName: '',
-          unsubscribed: false,
-          audienceId: import.meta.env.VITE_RESEND_AUDIENCE_ID,
-        }),
+      if (!audienceId) {
+        throw new Error('Resend Audience ID not found');
+      }
+
+      // Initialize Resend with the API key
+      const resend = new Resend(resendApiKey);
+
+      // Add contact to audience
+      const result = await resend.contacts.create({
+        email: data.email,
+        firstName: '',
+        lastName: '',
+        unsubscribed: false,
+        audienceId: audienceId,
       });
 
-      if (!response.ok) {
-        throw new Error('Subscription failed');
-      }
+      console.log('Subscription result:', result);
       
       toast({
         title: "Subscription Successful!",

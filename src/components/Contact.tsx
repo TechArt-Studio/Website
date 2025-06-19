@@ -2,9 +2,10 @@
 import React from 'react';
 import { Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { CardDescription, CardTitle } from '@/components/ui/card';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
 import { motion } from 'framer-motion';
+import NewsletterSubscription from '@/components/NewsletterSubscription';
 
 const Contact = () => {
   return (
@@ -34,12 +35,7 @@ const Contact = () => {
               inactiveZone={0.01}
             />
             <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl bg-black/40 backdrop-blur-sm p-6 border border-white/5 hover:bg-white/10 transition-all duration-300 group">
-              <div className="relative flex flex-1 flex-col justify-between gap-4">
-                <CardTitle className="text-white">Our Location</CardTitle>
-                <CardDescription className="text-gray-400 text-lg">
-                  China
-                </CardDescription>
-              </div>
+              <NewsletterSubscription />
             </div>
           </motion.div>
           

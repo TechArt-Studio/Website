@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { siteConfig } from '@/config/siteConfig';
+import NewsletterSubscription from '@/components/NewsletterSubscription';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -8,8 +9,8 @@ const Footer = () => {
   return (
     <footer className="py-16 bg-black border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          <div className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
+          <div className="space-y-4 md:col-span-2">
             <div className="flex items-center space-x-2">
               <img 
                 src={siteConfig.site.logo} 
@@ -24,7 +25,7 @@ const Footer = () => {
           </div>
           
           {siteConfig.footer.sections.map((section, index) => (
-            <div key={index}>
+            <div key={index} className="md:ml-8">
               <h4 className="text-white font-semibold mb-4">{section.title}</h4>
               <ul className="space-y-2 text-gray-400 text-sm">
                 {section.links.map((link, linkIndex) => (

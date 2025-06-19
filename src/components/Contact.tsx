@@ -34,9 +34,7 @@ const Contact = () => {
               proximity={64}
               inactiveZone={0.01}
             />
-            <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl bg-black/40 backdrop-blur-sm p-6 border border-white/5 hover:bg-white/10 transition-all duration-300 group">
-              <NewsletterSubscription />
-            </div>
+            <NewsletterSubscription />
           </motion.div>
           
           <motion.div 
